@@ -20,26 +20,26 @@ import {
 } from "lucide-react";
 
 export default function LocationPage() {
-  const locationLinks = buildLocationLinks("{{LOCATION_1_NAME}}");
-  const heroImage = { src: "/images/location1-image1.jpeg", alt: "{{LOCATION1_IMAGE_1_ALT}}" };
-  const supportImage = { src: "/images/location1-image2.jpeg", alt: "{{LOCATION1_IMAGE_2_ALT}}" };
+  const locationLinks = buildLocationLinks("North Baddesley");
+  const heroImage = { src: "/images/location1-image1.jpeg", alt: "White rental van driving along a tidy suburban road in North Baddesley" };
+  const supportImage = { src: "/images/location1-image2.jpeg", alt: "People loading boxes into a clean rental van outside a home in North Baddesley" };
   const faqs = [
-    { question: "{{LOCATION1_FAQ_1_QUESTION}}", answer: "{{LOCATION1_FAQ_1_ANSWER}}" },
-    { question: "{{LOCATION1_FAQ_2_QUESTION}}", answer: "{{LOCATION1_FAQ_2_ANSWER}}" },
-    { question: "{{LOCATION1_FAQ_3_QUESTION}}", answer: "{{LOCATION1_FAQ_3_ANSWER}}" },
-    { question: "{{LOCATION1_FAQ_4_QUESTION}}", answer: "{{LOCATION1_FAQ_4_ANSWER}}" },
-    { question: "{{LOCATION1_FAQ_5_QUESTION}}", answer: "{{LOCATION1_FAQ_5_ANSWER}}" },
+    { question: "What can I hire in North Baddesley?", answer: "Yes, customers in North Baddesley can hire vans, cars, minibuses and trucks depending on the job and availability." },
+    { question: "Can you deliver a hire vehicle to North Baddesley?", answer: "Yes, delivery and collection can often be arranged, which is useful if you want to keep the day simple." },
+    { question: "What are the most common reasons to hire here?", answer: "Many bookings are for house moves, furniture collection, trade jobs, business deliveries and group outings." },
+    { question: "Do you offer short and longer hires?", answer: "Yes, we offer flexible rental periods, so you can book for a short job or for longer if needed." },
+    { question: "Can you help me choose the right vehicle size?", answer: "We can guide you based on load space, passenger numbers, distance and the kind of driving you expect to do." },
   ];
   const trustCards = [
-    { title: "{{LOCATION1_TRUST_CARD_1_TITLE}}", description: "{{LOCATION1_TRUST_CARD_1_DESCRIPTION}}", icon: ShieldCheck },
-    { title: "{{LOCATION1_TRUST_CARD_2_TITLE}}", description: "{{LOCATION1_TRUST_CARD_2_DESCRIPTION}}", icon: Star },
-    { title: "{{LOCATION1_TRUST_CARD_3_TITLE}}", description: "{{LOCATION1_TRUST_CARD_3_DESCRIPTION}}", icon: Users },
+    { title: "Reliable vehicles", description: "A maintained fleet helps customers book with confidence for local and longer journeys.", icon: ShieldCheck },
+    { title: "Flexible service", description: "We keep booking arrangements practical, with support for different hire lengths and transport needs.", icon: Star },
+    { title: "Useful local support", description: "Southern Van Hire supports both private customers and businesses with straightforward local help.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "{{LOCATION1_FEATURE_CARD_1_DESCRIPTION}}" },
-    { value: "Van Hire", label: "{{LOCATION1_FEATURE_CARD_2_DESCRIPTION}}" },
-    { value: "Minibus Hire", label: "{{LOCATION1_FEATURE_CARD_3_DESCRIPTION}}" },
-    { value: "Truck Hire", label: "{{LOCATION1_FEATURE_CARD_4_DESCRIPTION}}" },
+    { value: "Car Hire", label: "Van hire for moving jobs, storage runs, deliveries and trade use around North Baddesley." },
+    { value: "Van Hire", label: "Car hire for everyday travel, temporary replacement needs and local business journeys." },
+    { value: "Minibus Hire", label: "Minibus hire for family events, club trips and organised group travel." },
+    { value: "Truck Hire", label: "Truck hire for heavier loads, site work and larger commercial transport tasks." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +52,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "{{LOCATION1_BENEFIT_1_TITLE}}", description: "{{LOCATION1_BENEFIT_1_DESCRIPTION}}", detail: "{{LOCATION1_BENEFIT_1_DETAIL}}" },
-    { icon: Clock3, title: "{{LOCATION1_BENEFIT_2_TITLE}}", description: "{{LOCATION1_BENEFIT_2_DESCRIPTION}}", detail: "{{LOCATION1_BENEFIT_2_DETAIL}}" },
-    { icon: CheckCircle2, title: "{{LOCATION1_BENEFIT_3_TITLE}}", description: "{{LOCATION1_BENEFIT_3_DESCRIPTION}}", detail: "{{LOCATION1_BENEFIT_3_DETAIL}}" },
+    { icon: BadgePoundSterling, title: "Choice that fits the job", description: "Hire the right vehicle for moving, collecting, delivering or day-to-day travel.", detail: "From a small van for furniture pickup to a larger vehicle for business work or a minibus for group plans, we help keep the choice practical." },
+    { icon: Clock3, title: "Hire around your schedule", description: "Flexible booking options help you plan around work, home moves and weekend jobs.", detail: "We aim to make timing easier with rental periods that suit short local use as well as longer bookings when more time is needed." },
+    { icon: CheckCircle2, title: "Dependable local support", description: "A maintained fleet and helpful service give you confidence before setting off.", detail: "We focus on reliable vehicles and clear arrangements so collection, delivery and the hire itself feel straightforward from the start." },
   ];
 
   return (
@@ -103,8 +103,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"{{LOCATION1_HERO_TITLE}}"}</h1>
-                <p className="text-xl text-white">{"{{LOCATION1_HERO_SUBTITLE}}"}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle Hire in North Baddesley"}</h1>
+                <p className="text-xl text-white">{"Book self-drive vans, cars, minibuses and trucks for local jobs, business use and longer journeys with flexible support from Southern Van Hire."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -127,18 +127,18 @@ export default function LocationPage() {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"{{LOCATION1_BOOKING_BADGE_TEXT}}"}
+                  {"Simple booking for North Baddesley"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"{{LOCATION1_BOOKING_SECTION_TITLE}}"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION1_BOOKING_SECTION_DESCRIPTION}}"}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Easy vehicle hire for North Baddesley"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"Hiring a vehicle for North Baddesley should be easy to arrange. We help local residents and businesses book suitable vans, cars, minibuses and trucks for one-off trips, planned jobs and ongoing transport needs without overcomplicating the process."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"{{LOCATION1_BOOKING_FEATURE_1}}"}
+                    {"Delivery and collection available"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"{{LOCATION1_BOOKING_FEATURE_2}}"}
+                    {"Short and longer hires"}
                   </div>
                 </div>
               </div>
@@ -153,8 +153,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"{{LOCATION1_TRUST_SECTION_TITLE}}"}</h2>
-            <p className="text-lg text-muted-foreground">{"{{LOCATION1_TRUST_SECTION_DESCRIPTION}}"}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"Why customers choose us in North Baddesley"}</h2>
+            <p className="text-lg text-muted-foreground">{"Our North Baddesley service is built around dependable vehicles, practical booking help and flexible arrangements that suit everyday jobs."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +173,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION1_FEATURE_SECTION_KICKER}}"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"{{LOCATION1_FEATURE_SECTION_TITLE}}"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"{{LOCATION1_FEATURE_SECTION_DESCRIPTION}}"}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Hire categories"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vehicle options available for North Baddesley"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"We provide practical self-drive options for everyday local use and wider Hampshire travel."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -195,13 +195,13 @@ export default function LocationPage() {
 
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION1_CONTENT_SECTION_KICKER}}"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION1_CONTENT_SECTION_TITLE}}"}</h2>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local vehicle hire"}</p>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Straightforward hire for home, work and local travel"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"{{LOCATION1_CONTENT_SECTION_PARAGRAPH_1}}"}</p>
-            <p>{"{{LOCATION1_CONTENT_SECTION_PARAGRAPH_2}}"}</p>
-            <p>{"{{LOCATION1_CONTENT_SECTION_PARAGRAPH_3}}"}</p>
-            <p>{"{{LOCATION1_CONTENT_SECTION_PARAGRAPH_4}}"}</p>
+            <p>{"Southern Van Hire supports North Baddesley with practical self-drive vehicle hire backed by the wider coverage and experience of a regional provider. While van hire is a major part of the service, we also offer cars, minibuses and trucks for many different transport requirements."}</p>
+            <p>{"North Baddesley is well placed for local and cross-county travel, making hire vehicles useful for house moves, furniture collection, business deliveries, trade work and short-term replacement transport. Customers often need something flexible rather than long-term ownership, and that is where hire can be a sensible option."}</p>
+            <p>{"Because the village sits close to Romsey, Southampton and key route links, many bookings involve a mix of local roads and larger A-road or motorway travel. We help customers choose a vehicle that suits the route, load and duration, whether that means a compact van, a comfortable car or a larger commercial option."}</p>
+            <p>{"Our aim is to keep the service straightforward: maintained vehicles, clear communication and practical booking support. That makes it easier for customers in North Baddesley to get a hire vehicle in place without wasting time."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +210,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION1_BENEFITS_SECTION_KICKER}}"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION1_BENEFITS_SECTION_TITLE}}"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"{{LOCATION1_BENEFITS_SECTION_DESCRIPTION}}"}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why hire here"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Useful vehicle hire for North Baddesley journeys"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"A practical fleet, flexible bookings and a straightforward local service make hiring in North Baddesley easier to organise."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -260,8 +260,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"{{LOCATION1_NEARBY_LOCATIONS_SECTION_TITLE}}"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"{{LOCATION1_NEARBY_LOCATIONS_SECTION_INTRO}}"}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Other places we cover near North Baddesley"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"If North Baddesley is not the only place you are travelling from, we also cover nearby Hampshire towns and villages that are practical for the same booking area."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -272,16 +272,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"{{LOCATION1_INFO_CONTENT_BLOCK_1_TITLE}}"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION1_INFO_CONTENT_BLOCK_1_BODY}}"}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Suitable vehicles for real tasks"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"We help match customers in North Baddesley with a hire vehicle that suits the journey, number of passengers or amount of cargo involved."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"{{LOCATION1_INFO_CONTENT_BLOCK_2_TITLE}}"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION1_INFO_CONTENT_BLOCK_2_BODY}}"}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Prepared for practical use"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Our rental vehicles are maintained and prepared to support reliable travel for domestic use, business work and planned transport needs."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"{{LOCATION1_INFO_CONTENT_BLOCK_3_TITLE}}"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION1_INFO_CONTENT_BLOCK_3_BODY}}"}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Helpful booking support"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"With delivery, collection and flexible hire periods available, booking a vehicle around North Baddesley can be kept simple and workable."}</p>
             </div>
           </div>
         </div>
@@ -291,14 +291,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION1_LOCAL_GUIDE_SECTION_TITLE}}"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"{{LOCATION1_LOCAL_GUIDE_SECTION_DESCRIPTION}}"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"North Baddesley driving guide"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for getting in and out of North Baddesley with a hire vehicle."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION1_LOCAL_GUIDE_PARAGRAPH_1}}"}</p>
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION1_LOCAL_GUIDE_PARAGRAPH_2}}"}</p>
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION1_LOCAL_GUIDE_PARAGRAPH_3}}"}</p>
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION1_LOCAL_GUIDE_PARAGRAPH_4}}"}</p>
+            <p className="text-base leading-8 text-slate-600">{"North Baddesley works well for straightforward local collection and drop-off planning, especially if you want to stay close to the village before joining wider Hampshire routes. Main Road is one of the practical local corridors to keep in mind, particularly for short residential moves, furniture pickups, and small business deliveries."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If you are hiring a larger vehicle, it helps to plan around village traffic and give yourself a little extra time at busier parts of the day. Many customers use North Baddesley as a convenient starting point for jobs that begin locally and then continue out towards the wider Test Valley and Southampton side of the area."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For self-drive van, car, minibus, or truck hire, the area suits practical trips such as house moves, collecting bulky items, event transport, and trade work. A short local run through North Baddesley is often followed by onward travel across Hampshire, so it is worth checking your loading plan, parking space, and route before setting off."}</p>
+            <p className="text-base leading-8 text-slate-600">{"When arranging vehicle hire in North Baddesley, the simplest approach is usually to think in stages: local access first, main route second, and unloading point third. That keeps the journey easier to manage, especially with longer vehicles or when timing matters for home deliveries, business bookings, or multi-stop work."}</p>
           </div>
         </div>
       </section>
@@ -306,9 +306,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION1_FAQ_SECTION_KICKER}}"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION1_FAQ_SECTION_TITLE}}"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"{{LOCATION1_FAQ_SECTION_DESCRIPTION}}"}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Need to know"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"North Baddesley hire FAQs"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Answers to common questions about hiring a vehicle in North Baddesley."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -326,8 +326,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"{{LOCATION1_CTA_TITLE}}"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"{{LOCATION1_CTA_DESCRIPTION}}"}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Book vehicle hire in North Baddesley"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"Arrange a suitable van, car, minibus or truck for North Baddesley with flexible booking and practical help from Southern Van Hire."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>

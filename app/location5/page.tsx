@@ -20,26 +20,26 @@ import {
 } from "lucide-react";
 
 export default function LocationPage() {
-  const locationLinks = buildLocationLinks("{{LOCATION_5_NAME}}");
-  const heroImage = { src: "/images/location5-image1.jpeg", alt: "{{LOCATION5_IMAGE_1_ALT}}" };
-  const supportImage = { src: "/images/location5-image2.jpeg", alt: "{{LOCATION5_IMAGE_2_ALT}}" };
+  const locationLinks = buildLocationLinks("Lyndhurst");
+  const heroImage = { src: "/images/location5-image1.jpeg", alt: "White rental van driving through a traditional village setting in Lyndhurst" };
+  const supportImage = { src: "/images/location5-image2.jpeg", alt: "People checking directions beside a rental van in Lyndhurst" };
   const faqs = [
-    { question: "{{LOCATION5_FAQ_1_QUESTION}}", answer: "{{LOCATION5_FAQ_1_ANSWER}}" },
-    { question: "{{LOCATION5_FAQ_2_QUESTION}}", answer: "{{LOCATION5_FAQ_2_ANSWER}}" },
-    { question: "{{LOCATION5_FAQ_3_QUESTION}}", answer: "{{LOCATION5_FAQ_3_ANSWER}}" },
-    { question: "{{LOCATION5_FAQ_4_QUESTION}}", answer: "{{LOCATION5_FAQ_4_ANSWER}}" },
-    { question: "{{LOCATION5_FAQ_5_QUESTION}}", answer: "{{LOCATION5_FAQ_5_ANSWER}}" },
+    { question: "Can I hire a van in Lyndhurst for moving house?", answer: "Yes, we can help arrange van hire for home moves, furniture collection, storage runs and general transport jobs in and around Lyndhurst." },
+    { question: "Do you offer hire vehicles for travel beyond Lyndhurst?", answer: "Yes, subject to the vehicle type and hire terms. Let us know your plans in advance so we can advise on suitability and paperwork." },
+    { question: "Are flexible hire lengths available in Lyndhurst?", answer: "We offer short and longer rental periods depending on availability and the type of vehicle you need." },
+    { question: "Is Lyndhurst vehicle hire suitable for business use?", answer: "Yes, businesses can hire vehicles for deliveries, seasonal demand, staff transport and other operational needs." },
+    { question: "What do I need when collecting a hire vehicle?", answer: "Bring your booking details, driving licence and any other identification or documents requested when your hire is arranged." },
   ];
   const trustCards = [
-    { title: "{{LOCATION5_TRUST_CARD_1_TITLE}}", description: "{{LOCATION5_TRUST_CARD_1_DESCRIPTION}}", icon: ShieldCheck },
-    { title: "{{LOCATION5_TRUST_CARD_2_TITLE}}", description: "{{LOCATION5_TRUST_CARD_2_DESCRIPTION}}", icon: Star },
-    { title: "{{LOCATION5_TRUST_CARD_3_TITLE}}", description: "{{LOCATION5_TRUST_CARD_3_DESCRIPTION}}", icon: Users },
+    { title: "Well-maintained fleet", description: "Our hire vehicles are prepared to support everyday transport, business use and one-off jobs without unnecessary fuss.", icon: ShieldCheck },
+    { title: "Flexible hire support", description: "From a short local booking to a longer rental, we work to keep arrangements clear and suitable for the job in hand.", icon: Star },
+    { title: "Straightforward local service", description: "We support Lyndhurst customers with practical advice on vehicle choice, booking options and collection or delivery arrangements.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "{{LOCATION5_FEATURE_CARD_1_DESCRIPTION}}" },
-    { value: "Van Hire", label: "{{LOCATION5_FEATURE_CARD_2_DESCRIPTION}}" },
-    { value: "Minibus Hire", label: "{{LOCATION5_FEATURE_CARD_3_DESCRIPTION}}" },
-    { value: "Truck Hire", label: "{{LOCATION5_FEATURE_CARD_4_DESCRIPTION}}" },
+    { value: "Car Hire", label: "Vans sized for moving, deliveries, retail collections and day-to-day transport jobs." },
+    { value: "Van Hire", label: "Cars for local journeys, weekend travel, temporary replacement use and business trips." },
+    { value: "Minibus Hire", label: "Minibuses for group outings, school travel, events and organised passenger transport." },
+    { value: "Truck Hire", label: "Trucks for heavier loads, trade work, site support and larger commercial moves." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +52,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "{{LOCATION5_BENEFIT_1_TITLE}}", description: "{{LOCATION5_BENEFIT_1_DESCRIPTION}}", detail: "{{LOCATION5_BENEFIT_1_DETAIL}}" },
-    { icon: Clock3, title: "{{LOCATION5_BENEFIT_2_TITLE}}", description: "{{LOCATION5_BENEFIT_2_DESCRIPTION}}", detail: "{{LOCATION5_BENEFIT_2_DETAIL}}" },
-    { icon: CheckCircle2, title: "{{LOCATION5_BENEFIT_3_TITLE}}", description: "{{LOCATION5_BENEFIT_3_DESCRIPTION}}", detail: "{{LOCATION5_BENEFIT_3_DETAIL}}" },
+    { icon: BadgePoundSterling, title: "One place for different vehicle types", description: "Our fleet covers everyday travel, moving jobs, group transport and heavier commercial use.", detail: "That means you can keep everything with one provider instead of searching around for separate vehicle types." },
+    { icon: Clock3, title: "Hire periods that stay practical", description: "Flexible booking periods help with urgent transport, scheduled work and longer-term planning.", detail: "A useful option for households, trades, offices and businesses dealing with changing demand." },
+    { icon: CheckCircle2, title: "Convenient local support", description: "Well-placed local coverage and delivery and collection options help make arrangements easier to manage.", detail: "That can save time when you already have collections, meetings, loading or staff travel to organise." },
   ];
 
   return (
@@ -103,8 +103,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"{{LOCATION5_HERO_TITLE}}"}</h1>
-                <p className="text-xl text-white">{"{{LOCATION5_HERO_SUBTITLE}}"}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle Hire in Lyndhurst"}</h1>
+                <p className="text-xl text-white">{"Practical self-drive van, car, minibus and truck hire for Lyndhurst, with flexible booking and dependable local support."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -127,18 +127,18 @@ export default function LocationPage() {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"{{LOCATION5_BOOKING_BADGE_TEXT}}"}
+                  {"Easy to arrange, ready for the road"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"{{LOCATION5_BOOKING_SECTION_TITLE}}"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION5_BOOKING_SECTION_DESCRIPTION}}"}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Simple vehicle hire for Lyndhurst"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"Booking for Lyndhurst is kept straightforward, whether you need a van for a move, a car for local travel, or a larger vehicle for business use. We help arrange the right hire period and a practical vehicle for New Forest roads and onward travel."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"{{LOCATION5_BOOKING_FEATURE_1}}"}
+                    {"Flexible self-drive hire"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"{{LOCATION5_BOOKING_FEATURE_2}}"}
+                    {"Delivery and collection available"}
                   </div>
                 </div>
               </div>
@@ -153,8 +153,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"{{LOCATION5_TRUST_SECTION_TITLE}}"}</h2>
-            <p className="text-lg text-muted-foreground">{"{{LOCATION5_TRUST_SECTION_DESCRIPTION}}"}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"A dependable choice for Lyndhurst hire"}</h2>
+            <p className="text-lg text-muted-foreground">{"Customers in Lyndhurst choose us for practical vehicle options, clear booking support and hire that fits real transport needs."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +173,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION5_FEATURE_SECTION_KICKER}}"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"{{LOCATION5_FEATURE_SECTION_TITLE}}"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"{{LOCATION5_FEATURE_SECTION_DESCRIPTION}}"}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Fleet options"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vehicle hire choices for Lyndhurst customers"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"From compact vehicles to larger load carriers, we cover the main hire categories customers around Lyndhurst regularly need."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -195,13 +195,13 @@ export default function LocationPage() {
 
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION5_CONTENT_SECTION_KICKER}}"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION5_CONTENT_SECTION_TITLE}}"}</h2>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why hire with us"}</p>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Dependable hire that suits New Forest driving"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"{{LOCATION5_CONTENT_SECTION_PARAGRAPH_1}}"}</p>
-            <p>{"{{LOCATION5_CONTENT_SECTION_PARAGRAPH_2}}"}</p>
-            <p>{"{{LOCATION5_CONTENT_SECTION_PARAGRAPH_3}}"}</p>
-            <p>{"{{LOCATION5_CONTENT_SECTION_PARAGRAPH_4}}"}</p>
+            <p>{"Lyndhurst hires often need a bit more planning than larger town bookings. Roads can narrow quickly once you leave the centre, and many customers want a vehicle that is easy to drive while still offering enough load space for moving, deliveries or event equipment."}</p>
+            <p>{"Southern Van Hire supports personal and business customers with vans, cars, minibuses and trucks, making it easier to match the vehicle to the job rather than making do with whatever is available. That is useful for everything from house clear-outs to hotel supplies and contractor work."}</p>
+            <p>{"Our approach is practical and service-led. Vehicles are prepared for hire, booking terms are explained clearly, and we aim to keep collection, delivery and return arrangements as straightforward as possible."}</p>
+            <p>{"If your journey starts in Lyndhurst and continues across Hampshire, Dorset or further afield, we can help you choose a rental vehicle that suits both the local roads and the distance you need to cover."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +210,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION5_BENEFITS_SECTION_KICKER}}"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION5_BENEFITS_SECTION_TITLE}}"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"{{LOCATION5_BENEFITS_SECTION_DESCRIPTION}}"}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why it works"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Good reasons to hire in Eastleigh"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful advantages for customers arranging practical self-drive vehicle hire in Eastleigh."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -254,8 +254,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"{{LOCATION5_NEARBY_LOCATIONS_SECTION_TITLE}}"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"{{LOCATION5_NEARBY_LOCATIONS_SECTION_INTRO}}"}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Areas served around Lyndhurst"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"We also cover practical hire needs around Lyndhurst, including nearby New Forest villages and surrounding Hampshire locations."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -266,16 +266,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"{{LOCATION5_INFO_CONTENT_BLOCK_1_TITLE}}"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION5_INFO_CONTENT_BLOCK_1_BODY}}"}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"The right vehicle for the journey"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Choose from cars, vans, minibuses and trucks depending on the size of the job, the number of passengers and the distance you plan to travel."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"{{LOCATION5_INFO_CONTENT_BLOCK_2_TITLE}}"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION5_INFO_CONTENT_BLOCK_2_BODY}}"}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Hire periods that fit around you"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Short-term and longer rentals are available, helping with one-off jobs, planned projects, busy trading periods and temporary replacement needs."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"{{LOCATION5_INFO_CONTENT_BLOCK_3_TITLE}}"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"{{LOCATION5_INFO_CONTENT_BLOCK_3_BODY}}"}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Prepared for practical use"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"A well-prepared rental vehicle makes day-to-day driving easier, especially when you need reliable transport without unnecessary complications."}</p>
             </div>
           </div>
         </div>
@@ -285,14 +285,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION5_LOCAL_GUIDE_SECTION_TITLE}}"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"{{LOCATION5_LOCAL_GUIDE_SECTION_DESCRIPTION}}"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving around Lyndhurst"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for planning vehicle hire around Lyndhurst and the surrounding New Forest area."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION5_LOCAL_GUIDE_PARAGRAPH_1}}"}</p>
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION5_LOCAL_GUIDE_PARAGRAPH_2}}"}</p>
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION5_LOCAL_GUIDE_PARAGRAPH_3}}"}</p>
-            <p className="text-base leading-8 text-slate-600">{"{{LOCATION5_LOCAL_GUIDE_PARAGRAPH_4}}"}</p>
+            <p className="text-base leading-8 text-slate-600">{"Lyndhurst is a practical starting point for vehicle hire if you are heading across the New Forest or back toward the larger road network. Around the village itself, routes such as Southampton Road and Queens Road can be busier at popular times, so it helps to allow a little extra time when collecting goods, loading up, or setting off in a larger vehicle."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If you are using a van, car, minibus, or truck for work or a household move, think about your route before you leave the centre of Lyndhurst. Some local roads feel narrower and more stop-start than the main approaches, so many drivers prefer to get onto the clearer through routes early, especially when carrying bulky items or travelling with a full load."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Westwood Road can be useful for reaching nearby residential areas, while Southampton Road is often the more straightforward option for joining onward journeys. In a place like Lyndhurst, where visitor traffic and local movement can mix through the day, a self-drive hire vehicle gives you the flexibility to travel on your own schedule rather than working around fixed delivery windows."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Lyndhurst hires are often used for holiday accommodation changeovers, furniture collection, event transport, and business trips that need more space than a standard car. If you are planning several stops, it is worth organising loading order, parking space, and turnaround points in advance so your journey through the village and out onto the surrounding routes stays simple."}</p>
           </div>
         </div>
       </section>
@@ -300,9 +300,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"{{LOCATION5_FAQ_SECTION_KICKER}}"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"{{LOCATION5_FAQ_SECTION_TITLE}}"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"{{LOCATION5_FAQ_SECTION_DESCRIPTION}}"}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Lyndhurst hire FAQs"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Questions we often hear in Lyndhurst"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Useful answers for customers booking a rental vehicle in Lyndhurst and the wider New Forest area."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -320,8 +320,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"{{LOCATION5_CTA_TITLE}}"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"{{LOCATION5_CTA_DESCRIPTION}}"}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Need vehicle hire in Lyndhurst?"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"Speak to Southern Van Hire for a practical quote and the right vehicle for your Lyndhurst booking."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>
