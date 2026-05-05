@@ -1,11 +1,16 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
+import { siteUrl } from '@/lib/company'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Van, Car, Minibus and Truck Hire in Romsey | Southern Van Hire',
   description: 'Southern Van Hire offers dependable van, car, minibus and truck hire in Romsey with flexible booking, maintained vehicles and practical local support.',
   generator: 'v0.app',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       {
@@ -39,3 +44,4 @@ export default function RootLayout({
     </html>
   )
 }
+
