@@ -6,9 +6,9 @@ const locationNames = [
   "North Baddesley",
   "Chandler's Ford",
   "Bishop's Waltham",
-  "Brockenhurst",
-  "Lyndhurst",
-  "Marchwood",
+  "Stockbridge",
+  "Fordingbridge",
+  "Totton",
 ];
 
 function slugifyLocation(value) {

@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { mainLocationName } from "@/lib/company";
 import { phoneDisplay, phoneHref } from "@/lib/contact";
 import { buildLocationLinks } from "@/lib/location-links";
+import { slugifyLocation } from "@/lib/utils";
 import {
   BadgePoundSterling,
   CheckCircle2,
@@ -19,27 +21,33 @@ import {
   Users,
 } from "lucide-react";
 
+export const metadata = {
+  alternates: {
+    canonical: `/${slugifyLocation("Chandler's Ford")}`,
+  },
+} satisfies Metadata;
+
 export default function LocationPage() {
   const locationLinks = buildLocationLinks("Chandler's Ford");
-  const heroImage = { src: "/images/location2-image1.jpeg", alt: "Modern rental van travelling on a local road in Chandler's Ford" };
-  const supportImage = { src: "/images/location2-image2.jpeg", alt: "Customer collecting rental vehicle keys at a pickup point in Chandler's Ford" };
+  const heroImage = { src: "/images/location2-image1.jpeg", alt: "Rental van on a residential road in Chandler's Ford" };
+  const supportImage = { src: "/images/location2-image2.jpeg", alt: "Self-drive hire vehicle near shops and main routes in Chandler's Ford" };
   const faqs = [
-    { question: "Which vehicles are available for Awbridge?", answer: "Yes, Awbridge customers can book from a range that includes vans, cars, minibuses and trucks." },
-    { question: "Do you offer delivery to Awbridge?", answer: "Yes, many hires can be arranged with delivery and collection to make things easier around your plans." },
-    { question: "Can businesses in Awbridge hire vehicles too?", answer: "Absolutely. We support both personal hires and business bookings, including short-term and longer requirements." },
-    { question: "What are Awbridge hires usually used for?", answer: "Customers commonly hire for home moves, furniture collection, trade work, events, group transport and commercial deliveries." },
-    { question: "How do I know what vehicle to book?", answer: "If you tell us what you need to carry, how far you are travelling and how long you need the vehicle, we can help narrow down the best option." },
+    { question: "Is van hire available in Chandler's Ford?", answer: "Yes, many customers in Chandler's Ford hire vans for moving items, collecting purchases and trade work." },
+    { question: "Can I hire other vehicle types in Chandler's Ford?", answer: "Yes, we can supply cars, minibuses and trucks as well as vans, depending on the booking." },
+    { question: "Do you offer flexible rental lengths in Chandler's Ford?", answer: "Flexible booking periods are available, including hires that run beyond a single day." },
+    { question: "Do you support business vehicle hire in Chandler's Ford?", answer: "Yes, business users can hire vehicles for deliveries, fleet support and temporary transport cover." },
+    { question: "Can the vehicle be delivered in Chandler's Ford?", answer: "Delivery and collection can be arranged, depending on the booking details." },
   ];
   const trustCards = [
-    { title: "Well-maintained fleet", description: "Vehicles are prepared for practical daily use, whether you need transport for a move, delivery run or business trip.", icon: ShieldCheck },
-    { title: "Flexible hire periods", description: "From short hires to longer arrangements, we help customers find a vehicle and timescale that suits the job.", icon: Star },
-    { title: "Convenient local service", description: "Delivery and collection options help keep hiring convenient around North Baddesley and the surrounding area.", icon: Users },
+    { title: "Dependable vehicles", description: "Vehicles are maintained and prepared with everyday reliability in mind, whether you need a car, van, minibus or truck.", icon: ShieldCheck },
+    { title: "Convenient service", description: "Free delivery and collection helps keep local bookings convenient, especially for home moves and business jobs.", icon: Star },
+    { title: "Flexible hire terms", description: "Short and longer hire periods are available, so you can book around the job rather than forcing the job around the booking.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "Van hire for removals, garden projects, trade materials and local delivery work." },
-    { value: "Van Hire", label: "Car hire for everyday mobility, business appointments and short-term cover." },
-    { value: "Minibus Hire", label: "Minibus hire for community travel, family events and organised trips." },
-    { value: "Truck Hire", label: "Truck hire for heavier equipment, bulk loads and larger transport jobs." },
+    { value: "Car Hire", label: "Van hire for moving jobs, delivery work and larger household collections." },
+    { value: "Van Hire", label: "Car hire for daily transport, work trips and short-notice travel." },
+    { value: "Minibus Hire", label: "Minibus hire for group outings, events and organised travel." },
+    { value: "Truck Hire", label: "Truck hire for larger commercial loads and heavier-duty tasks." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +60,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "The right vehicle for the journey", description: "Choose from vehicles suited to domestic jobs, work use and group travel.", detail: "That could mean a van for transporting goods, a car for temporary travel needs, or a larger vehicle for carrying more people or heavier loads." },
-    { icon: Clock3, title: "Booking that works around real plans", description: "Flexible rental periods help when plans depend on property access, loading times or business schedules.", detail: "We work around practical timing, helping customers book a vehicle for a short task, a full day or a longer requirement where needed." },
-    { icon: CheckCircle2, title: "Straightforward and dependable", description: "Maintained vehicles and straightforward service keep things clear from booking to return.", detail: "Our approach is simple: dependable transport, clear communication and support that helps customers in Awbridge get on with the journey." },
+    { icon: BadgePoundSterling, title: "More suitable vehicle choices", description: "A broad fleet gives you suitable options for local travel, home projects, business use and larger transport tasks.", detail: "That means you can book a car, van, minibus or truck depending on what the day actually requires." },
+    { icon: Clock3, title: "Flexible for changing plans", description: "Flexible hire terms are helpful for bookings that need to cover more than a single errand or journey.", detail: "It is a practical way to handle busy schedules, multi-stop jobs and temporary transport gaps." },
+    { icon: CheckCircle2, title: "Straightforward from booking to return", description: "Maintained vehicles and service-led support help keep your booking simple and dependable.", detail: "We focus on getting customers into the right hire vehicle with as little fuss as possible." },
   ];
 
   return (
@@ -103,8 +111,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle Hire in Chandler's Ford Made Simple"}</h1>
-                <p className="text-xl text-white">{"Flexible self-drive hire for Awbridge with practical vehicles for moving, business use, group travel and general transport needs."}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle hire in Chandler's Ford made practical"}</h1>
+                <p className="text-xl text-white">{"Flexible van, car, minibus and truck hire in Chandler's Ford with maintained vehicles and practical support from Southern Van Hire."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -127,18 +135,18 @@ export default function LocationPage() {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"Flexible hires for Awbridge"}
+                  {"Easy hire across Chandler's Ford"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Book vehicle hire for Awbridge without the hassle"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"If you need a vehicle in Awbridge, we make the booking process practical and easy to follow. Southern Van Hire can help arrange vans, cars, minibuses and trucks for local jobs, regional travel and business requirements with flexible rental options."}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Simple vehicle booking for Chandler's Ford"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"For Chandler's Ford customers, we keep the booking process practical and clear. Whether you need a van for a weekend move or a car for business travel, we help arrange a hire vehicle that suits the journey and the timescale."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"Maintained self-drive vehicles"}
+                    {"Broad self-drive fleet"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"Support for personal and business use"}
+                    {"Short and longer hires available"}
                   </div>
                 </div>
               </div>
@@ -153,8 +161,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"Why customers book with us in North Baddesley"}</h2>
-            <p className="text-lg text-muted-foreground">{"A dependable choice for self-drive vehicle hire in North Baddesley, with practical support and a broad range of vehicles."}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"Reliable hire support for Chandler's Ford"}</h2>
+            <p className="text-lg text-muted-foreground">{"Customers in Chandler's Ford choose us for sensible vehicle choice, maintained vehicles and a service that keeps the booking process clear from start to finish."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +181,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Available to hire"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vans, cars, minibuses and trucks for Awbridge"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"Our fleet gives Awbridge customers practical self-drive options for everyday use and more specialist transport tasks."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Fleet options"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Hire vehicles for Chandler's Ford customers"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"Chandler's Ford customers often need flexible transport for both local roads and wider Hampshire journeys, so we offer a practical range of self-drive vehicles."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -195,13 +203,13 @@ export default function LocationPage() {
 
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Serving Awbridge"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Vehicle hire that suits Awbridge’s local and regional travel needs"}</h2>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Well placed for travel"}</p>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Vehicle hire that suits Chandler's Ford life"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"Awbridge customers often need vehicle hire that is flexible enough for both rural local roads and longer onward journeys. Southern Van Hire supports that with a broad self-drive fleet and a service designed to stay practical rather than overcomplicated."}</p>
-            <p>{"Van hire is especially useful in Awbridge for moving household items, collecting materials, handling trade jobs and making deliveries. We also provide cars for temporary transport, minibuses for group plans and trucks for larger commercial tasks."}</p>
-            <p>{"Because Awbridge sits close to Romsey and key Hampshire route links, many hires combine local pickups with trips further afield. We help customers think through vehicle size, load space and travel type so the booking suits the job from the outset."}</p>
-            <p>{"Our service is aimed at both individuals and businesses looking for maintained vehicles, clear arrangements and support they can actually use. That keeps vehicle hire in Awbridge straightforward whether the booking is simple or more involved."}</p>
+            <p>{"Chandler's Ford is a busy base for both residential and business travel, with quick connections towards Eastleigh, Southampton, Winchester and the motorway network. That makes flexible vehicle hire especially useful for customers who need more space or temporary transport."}</p>
+            <p>{"Chandler's Ford works well for both local jobs and longer journeys thanks to easy links towards Eastleigh, Southampton and Winchester. We help customers choose a vehicle that fits the task properly, whether that is a compact van for a few items or a larger vehicle for heavier loads."}</p>
+            <p>{"A lot of hires in Chandler's Ford are for practical, time-sensitive jobs. That is why we keep the service clear and responsive, with flexible hire periods, maintained vehicles and straightforward advice for personal or business bookings."}</p>
+            <p>{"From home moves and furniture collections to trade work, events and temporary fleet support, our Chandler's Ford hire service is designed to be useful rather than complicated. You get a reliable vehicle and a process that helps you stay on schedule."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +218,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Practical advantages"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"A useful hire option for Awbridge and nearby routes"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Awbridge customers benefit from flexible bookings, sensible vehicle choices and support that fits rural and regional travel needs."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why it helps"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"A useful fit for Chandler's Ford travel"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Clear benefits for customers looking for practical, flexible vehicle hire around Chandler's Ford."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -254,8 +262,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"More areas near North Baddesley"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"If North Baddesley is your starting point, we also cover other nearby towns and villages across the wider Romsey area."}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Other areas we cover near Chandler's Ford"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"From Chandler's Ford, we also support hires across nearby towns and villages, giving you practical options if you are travelling locally or arranging transport across the wider area."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -266,16 +274,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"A vehicle for the job"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Choose from practical cars, vans, minibuses and trucks for short local jobs, longer trips or planned business use."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Flexible vehicle hire"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Choose from practical rental vehicles for day hire, weekend use, longer bookings and business needs, with straightforward support from booking to return."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Straightforward booking"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"We aim to keep booking simple with clear hire options, flexible periods and delivery and collection where arranged."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Well-kept fleet"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Our cars, vans, minibuses and trucks are prepared for reliable everyday use, helping you get on with the job without unnecessary fuss."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Ready for real use"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Our hire vehicles are prepared for day-to-day reliability, helping customers travel, move goods or support work without added hassle."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Practical local service"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Flexible booking options make it easier to arrange the right hire vehicle for short notice jobs, planned trips, business cover or longer transport needs around Chandler's Ford and beyond."}</p>
             </div>
           </div>
         </div>
@@ -285,14 +293,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving in and around Chandler's Ford"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local guidance for planning collection, deliveries, day hire and longer trips from Chandler's Ford."}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving around Chandler's Ford"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful driving pointers for getting in and out of Chandler's Ford smoothly, whether you are hiring for local jobs, business travel or a longer run across Hampshire."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"Chandler's Ford sits well for straightforward travel across south Hampshire, with easy access into the wider Eastleigh area and convenient onward routes towards Southampton, Winchester and beyond. For customers hiring a vehicle locally, that makes it a practical base whether you are collecting furniture, handling business deliveries or organising a house move."}</p>
-            <p className="text-base leading-8 text-slate-600">{"If you are driving a larger van, minibus or truck, it helps to plan around school-run traffic, supermarket access roads and tighter residential turns at busier times of day. A little extra route planning can make collections and drop-offs in Chandler's Ford much easier, especially if you are fitting several stops into one booking."}</p>
-            <p className="text-base leading-8 text-slate-600">{"Many hires in Chandler's Ford are for local jobs first and longer mileage later, so it is worth thinking ahead about fuel, loading space and where you will pause on route. For exhibition runs, trade work or weekend moving jobs, choosing the right size vehicle from the start usually saves time and avoids unnecessary return trips."}</p>
-            <p className="text-base leading-8 text-slate-600">{"For wider journeys, Chandler's Ford works well as a starting point because you can be on key Hampshire corridors quickly without needing to cross the busiest central areas first. That is useful for self-drive customers who want a simple pick-up and a more direct run to business parks, event venues, storage sites or residential addresses across the region."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Chandler's Ford sits in a practical spot for self-drive hire, with straightforward access into the wider Eastleigh and Southampton area. For local trips, it helps to plan around the busier morning and late afternoon periods, especially if you are collecting furniture, making timed deliveries or heading to a work site with a larger vehicle."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If your journey takes you beyond town, the main local routes give good links across Hampshire, so Chandler's Ford works well as a starting point for home moves, trade jobs and business transport. Drivers hiring a van, car, minibus or truck often find it useful for both shorter local runs and longer cross-county journeys without needing to pass through more congested central areas first."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For practical stop planning, it is worth sorting fuel, refreshments and loading checks before you get too far into a busy day. Around Chandler's Ford and the surrounding Eastleigh area, there are plenty of everyday stop-off options for supplies and quick breaks, which is especially useful if you are travelling with passengers or managing a multi-drop schedule."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Chandler's Ford is also a sensible base if you need a hire vehicle for mixed use over the same booking, such as collecting stock, attending an event, then returning with equipment or passengers. A little route planning in advance usually makes things easier, particularly when using a larger vehicle on residential roads, at retail stops or when timing collection and return around the working day."}</p>
           </div>
         </div>
       </section>
@@ -300,9 +308,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Helpful answers"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Awbridge vehicle hire FAQs"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"Quick answers for customers arranging self-drive hire in Awbridge."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Chandler's Ford FAQs"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Common questions about Chandler's Ford hire"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Helpful information for customers planning vehicle hire in Chandler's Ford."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -320,8 +328,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"Arrange vehicle hire in Awbridge"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"Get a practical hire option for Awbridge from Southern Van Hire, with vans, cars, minibuses and trucks available for a wide range of uses."}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Book a Chandler's Ford hire vehicle"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"Arrange practical self-drive vehicle hire in Chandler's Ford for personal journeys, moving tasks and business transport needs."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>

@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { mainLocationName } from "@/lib/company";
 import { phoneDisplay, phoneHref } from "@/lib/contact";
 import { buildLocationLinks } from "@/lib/location-links";
+import { slugifyLocation } from "@/lib/utils";
 import {
   BadgePoundSterling,
   CheckCircle2,
@@ -19,27 +21,33 @@ import {
   Users,
 } from "lucide-react";
 
+export const metadata = {
+  alternates: {
+    canonical: `/${slugifyLocation("Totton")}`,
+  },
+} satisfies Metadata;
+
 export default function LocationPage() {
-  const locationLinks = buildLocationLinks("Marchwood");
-  const heroImage = { src: "/images/location6-image1.jpeg", alt: "Modern rental van on a local access road near Marchwood business units" };
-  const supportImage = { src: "/images/location6-image2.jpeg", alt: "Workers loading tools into a clean rental van in Marchwood" };
+  const locationLinks = buildLocationLinks("Totton");
+  const heroImage = { src: "/images/location6-image1.jpeg", alt: "Rental van on a road near Totton with New Forest surroundings" };
+  const supportImage = { src: "/images/location6-image2.jpeg", alt: "Self-drive hire vehicle near Totton and the Southampton approach roads" };
   const faqs = [
-    { question: "Do you provide van hire in Marchwood for moving jobs?", answer: "Yes, we offer van hire suitable for house moves, furniture transport, storage runs and everyday moving jobs in Marchwood." },
-    { question: "Can I hire more than just vans in Marchwood?", answer: "Yes, subject to availability. We offer cars, vans, minibuses and trucks for both personal and business customers." },
-    { question: "Is Marchwood hire available for business use?", answer: "Yes, many business customers hire vehicles for deliveries, project work, temporary cover and general operational support." },
-    { question: "Do you offer delivery or collection in Marchwood?", answer: "Delivery and collection can often be arranged depending on the booking and location details." },
-    { question: "What documents do I need for vehicle collection?", answer: "Bring your driving licence, booking information and any supporting identification requested when your hire is confirmed." },
+    { question: "Can I hire a van in Totton for a home move?", answer: "Yes, we regularly help Totton customers with van hire for moving house, storage runs and furniture collection." },
+    { question: "Do you supply vehicles for business use in Totton?", answer: "Yes, business users can hire vehicles for short-term cover, deliveries, site visits and other operational needs." },
+    { question: "What vehicles are available to hire around Totton?", answer: "We offer a range of cars, vans, minibuses and trucks, subject to booking dates and availability." },
+    { question: "Is delivery or collection available in the Totton area?", answer: "In many cases, yes. Availability depends on the vehicle type, timing and location." },
+    { question: "Can I arrange a longer rental period?", answer: "Yes, longer hires can usually be discussed if you need a vehicle beyond a standard short-term booking." },
   ];
   const trustCards = [
-    { title: "Prepared rental vehicles", description: "Our vehicles are maintained and prepared with practical self-drive use in mind, from short jobs to longer bookings.", icon: ShieldCheck },
-    { title: "Personal and business friendly", description: "We support both household and commercial bookings with a wide choice of vehicle types and flexible hire periods.", icon: Star },
-    { title: "No unnecessary hassle", description: "The aim is simple service, clear communication and vehicle hire that fits the work you need to do.", icon: Users },
+    { title: "Prepared for the road", description: "Our vehicles are looked after to support reliable private and business hire.", icon: ShieldCheck },
+    { title: "Hire on terms that fit", description: "We offer flexible hire periods to suit one-off jobs, planned trips and temporary fleet needs.", icon: Star },
+    { title: "Straightforward service", description: "Local knowledge and practical support help keep the process clear from booking to return.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "Vans for moving, contractor work, furniture transport and routine delivery tasks." },
-    { value: "Van Hire", label: "Cars for local travel, business appointments and convenient temporary transport." },
-    { value: "Minibus Hire", label: "Minibuses for organised group travel, events, clubs and planned outings." },
-    { value: "Truck Hire", label: "Trucks for larger loads, site support and heavier commercial transport jobs." },
+    { value: "Car Hire", label: "Van hire for moves, bulky loads, tools, stock and everyday transport jobs." },
+    { value: "Van Hire", label: "Car hire for business travel, replacement use and flexible local journeys." },
+    { value: "Minibus Hire", label: "Minibus options for group outings, sports travel and organised events." },
+    { value: "Truck Hire", label: "Truck hire for heavier work, site access and larger commercial loads." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +60,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "Useful vehicle choice", description: "Choose a vehicle that fits local jobs, waterside routes and wider Hampshire travel.", detail: "Whether you need a van for moving, a car for everyday travel or a larger vehicle for business work, we help match the hire to the route and purpose." },
-    { icon: Clock3, title: "Hire periods that suit the job", description: "Book for a day, a week or a longer period depending on what the job demands.", detail: "That flexibility helps with one-off collections, temporary fleet cover, project work and planned household moves around Marchwood and beyond." },
-    { icon: CheckCircle2, title: "Straightforward support", description: "We focus on practical service, clear information and dependable vehicle preparation.", detail: "For customers who simply want the booking handled properly, that straightforward approach can save time and avoid complications." },
+    { icon: BadgePoundSterling, title: "The right vehicle for the job", description: "Choose the vehicle size and hire length that best suits your plans.", detail: "That means less wasted space, better value and a more practical trip whether you are moving goods, transporting people or covering business mileage." },
+    { icon: Clock3, title: "Simple to arrange", description: "We keep the booking process clear so you can get organised quickly.", detail: "From first enquiry to collection or delivery, the focus stays on simple arrangements, realistic timings and vehicles that are ready for work." },
+    { icon: CheckCircle2, title: "Built for everyday use", description: "Our range supports both local trips around Totton and longer journeys across the South.", detail: "That makes us a practical option for home moves, retail collections, events, contractor work and temporary business fleet cover." },
   ];
 
   return (
@@ -103,8 +111,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle Hire in Marchwood"}</h1>
-                <p className="text-xl text-white">{"Reliable self-drive van, car, minibus and truck hire for Marchwood, backed by flexible booking and practical support."}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Totton vehicle hire for work, home and travel"}</h1>
+                <p className="text-xl text-white">{"Reliable self-drive van, car, minibus and truck hire for Totton, with flexible arrangements and helpful local support."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -127,18 +135,18 @@ export default function LocationPage() {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"Easy local booking support"}
+                  {"Straightforward local booking"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Book the right vehicle for Marchwood"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"If you need a rental vehicle in Marchwood, we make the process clear from the start. We can help with short-term hires, longer bookings and practical vehicle choices for local roads, waterside work and onward travel across the region."}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Book hire vehicles for Totton with confidence"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"Totton is a busy base for commuters, businesses, trades and families, so vehicle hire needs to be practical and flexible. We help customers arrange suitable self-drive vehicles for local jobs, longer runs and planned business use without overcomplicating the process."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"Self-drive options across the fleet"}
+                    {"Well-maintained vehicles"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"Business and personal hire"}
+                    {"Short and longer hire options"}
                   </div>
                 </div>
               </div>
@@ -153,8 +161,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"Why customers in Marchwood book with us"}</h2>
-            <p className="text-lg text-muted-foreground">{"Marchwood customers rely on us for sensible vehicle choices, practical booking help and a dependable hire service."}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"Why Totton customers book with us"}</h2>
+            <p className="text-lg text-muted-foreground">{"Totton customers rely on us for practical vehicle choice, dependable standards and a service built around real transport needs."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +181,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Hire categories"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vehicles available for Marchwood hire"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"Our fleet covers the main vehicle types customers in Marchwood regularly need, from day-to-day transport to larger working vehicles."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Vehicle types available"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vehicle Hire Choices for Totton and the Waterside"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"Our Totton service covers the vehicle types most customers need, whether the job is personal, commercial, local or longer distance."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -195,13 +203,13 @@ export default function LocationPage() {
 
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local service"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Vehicle hire that works for Marchwood journeys"}</h2>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local hire support"}</p>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Vehicle hire that suits the way Totton travels"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"Marchwood has a distinct mix of residential streets, waterside industry and port-related traffic, so the right hire vehicle can make a real difference. Some customers need something compact and manageable, while others need extra carrying space or a heavier-duty option for trade work."}</p>
-            <p>{"Southern Van Hire supplies vans, cars, minibuses and trucks for customers in and around Marchwood, helping with everything from home moves and retail collections to business deliveries and temporary fleet cover."}</p>
-            <p>{"Our service is designed to stay practical. We focus on suitable vehicles, flexible rental periods and straightforward arrangements that work for real transport needs rather than overcomplicating the booking."}</p>
-            <p>{"For travel into Southampton, across the New Forest side of the water, or out towards wider Hampshire routes, we can help you arrange a rental vehicle that is prepared for the job and easy to manage."}</p>
+            <p>{"Totton sits in a useful position for drivers travelling between Southampton, the New Forest and the wider Hampshire road network. That makes it a popular place to hire for local moves, retail collections, project work and day-to-day transport needs."}</p>
+            <p>{"For customers in Totton, that means dependable vehicle hire that fits around real schedules. Whether you need transport for a day, a week or longer, the service is designed to be flexible and easy to arrange."}</p>
+            <p>{"We regularly help people in Totton with home moves, retail collections, business deliveries, temporary fleet cover and self-drive travel when extra space is needed. The aim is simple: provide the right vehicle, in good condition, with a booking process that stays clear and practical."}</p>
+            <p>{"Across Totton and nearby areas, we focus on clear communication, maintained vehicles and flexible hire periods that fit real journeys rather than forcing customers into a rigid booking model."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +218,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"What helps most"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Benefits of hiring in Marchwood with us"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Three practical reasons many customers around Marchwood choose Southern Van Hire for self-drive vehicle rental."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why it works"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Useful advantages for Totton drivers"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Helpful reasons why customers in Totton choose us when they need straightforward vehicle hire without extra hassle."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -254,8 +262,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Nearby areas to Marchwood we cover"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"Alongside Marchwood, we support customers in surrounding villages and nearby areas across the waterside and Southampton side of the forest."}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Nearby places around Totton"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"If Totton is convenient for you, we also cover nearby places across the Southampton and New Forest side of the area."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -266,16 +274,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"More than one type of vehicle"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Our range includes cars, vans, minibuses and trucks so you can hire according to the load, passengers and route involved."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Vehicles for all kinds of journeys"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"A broad fleet makes it easier to hire for commuting, events, deliveries, moves and larger commercial tasks."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Short and longer hire options"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Flexible rental lengths make it easier to cover quick jobs, planned projects, replacement transport and ongoing business demand."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Dependable rental vehicles"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Each hire vehicle is prepared with day-to-day reliability in mind so you can focus on the trip ahead."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Ready for real-world use"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"A prepared hire vehicle helps keep work, travel and moving plans on schedule with less disruption."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Booking to suit your schedule"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"We support both one-off hires and more flexible arrangements for repeat or longer-term use."}</p>
             </div>
           </div>
         </div>
@@ -285,14 +293,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving in and around Marchwood"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for Marchwood, with practical guidance on routes, access and planning your hire journey."}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving and route tips for Totton"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for planning vehicle hire in and around Totton, from route choice to quick stop options before longer trips."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"Marchwood is a practical base for local vehicle hire if you need to move between village roads and the wider Waterside area. Main Road is one of the key local routes through Marchwood, making it useful for short runs, home moves and day-to-day business driving."}</p>
-            <p className="text-base leading-8 text-slate-600">{"If you are collecting furniture, making deliveries or heading out with a larger vehicle, it helps to plan around tighter residential stretches and busier periods near local junctions. Hythe Road is a straightforward link for getting in and out of Marchwood without adding unnecessary mileage to the trip."}</p>
-            <p className="text-base leading-8 text-slate-600">{"Drivers hiring in Marchwood often need a vehicle that can cope with mixed use, from village access to longer journeys beyond the immediate area. For that reason, many customers choose a van, car, minibus or truck that is easy to handle locally but still comfortable for wider Hampshire travel."}</p>
-            <p className="text-base leading-8 text-slate-600">{"Before setting off, it is worth allowing a little extra time for loading, checking your route and finding sensible stopping points once you leave the village. A simple plan works best in Marchwood: use the main local roads efficiently, avoid last-minute detours and choose a vehicle that matches the job properly."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Totton works well for practical vehicle hire because you can get moving quickly without needing to cut through busier city-centre traffic first. Main Road is a useful local route for joining the wider area, whether you are heading towards jobs in the New Forest side of town or travelling east for Southampton connections."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If you are collecting furniture, making deliveries or planning a house move, it helps to think about timing in Totton. Local roads can feel busier around school runs and commuter periods, so an earlier pickup or a quieter midday departure often makes loading and getting away much easier."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For longer journeys, it is worth sorting basic stop planning before you set off. Calmore Service Station is a handy nearby option for fuel and quick supplies, which can save time if you are taking a van, car, minibus or truck out for a full day of driving."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Totton is also a practical starting point for mixed personal and business use, from local transport jobs to weekend moves and event runs. If you are travelling with a larger vehicle, give yourself a little extra time around station-side roads and built-up stretches so parking, turning and unloading stay straightforward."}</p>
           </div>
         </div>
       </section>
@@ -300,9 +308,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Marchwood questions answered"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Marchwood vehicle hire FAQs"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"Answers to common questions from customers arranging vehicle hire in Marchwood."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Totton hire questions"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Totton vehicle hire FAQs"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Answers to common questions about hiring a vehicle in Totton and nearby areas."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -320,8 +328,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"Ready to book in Marchwood?"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"Get in touch with Southern Van Hire to arrange a practical rental vehicle for Marchwood and surrounding areas."}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Arrange your Totton vehicle hire"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"Tell us what you need to move, where you are travelling and how long you need the vehicle for, and we will help with a suitable Totton hire option."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>

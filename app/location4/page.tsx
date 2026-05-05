@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { mainLocationName } from "@/lib/company";
 import { phoneDisplay, phoneHref } from "@/lib/contact";
 import { buildLocationLinks } from "@/lib/location-links";
+import { slugifyLocation } from "@/lib/utils";
 import {
   BadgePoundSterling,
   CheckCircle2,
@@ -19,27 +21,33 @@ import {
   Users,
 } from "lucide-react";
 
+export const metadata = {
+  alternates: {
+    canonical: `/${slugifyLocation("Stockbridge")}`,
+  },
+} satisfies Metadata;
+
 export default function LocationPage() {
-  const locationLinks = buildLocationLinks("Brockenhurst");
-  const heroImage = { src: "/images/location4-image1.jpeg", alt: "Clean rental van travelling on a tree-lined road near Brockenhurst" };
-  const supportImage = { src: "/images/location4-image2.jpeg", alt: "Two adults loading luggage into a rental vehicle near Brockenhurst" };
+  const locationLinks = buildLocationLinks("Stockbridge");
+  const heroImage = { src: "/images/location4-image1.jpeg", alt: "Rental van parked on a street in Stockbridge" };
+  const supportImage = { src: "/images/location4-image2.jpeg", alt: "Hire vehicle travelling through the Stockbridge area" };
   const faqs = [
-    { question: "Can I arrange vehicle hire in Brockenhurst for a New Forest move or large pickup?", answer: "We offer a range of cars, vans, minibuses and trucks, subject to availability and booking dates." },
-    { question: "Do you offer delivery and collection for vehicle hire in Brockenhurst?", answer: "Yes, many customers book vehicles for local moves, furniture pickups and other household transport jobs." },
-    { question: "Do you provide vehicle hire for businesses?", answer: "Yes, we support business users who need flexible self-drive transport for short or longer periods." },
-    { question: "What kind of hire vehicle is best for collecting furniture or equipment around Brockenhurst?", answer: "In many cases, yes. It depends on the vehicle type and the booking arrangement." },
-    { question: "How do I know which vehicle size to book?", answer: "The right option depends on passenger numbers, luggage and route plans. We can help you choose a suitable vehicle." },
+    { question: "What types of vehicle can I hire in Hythe?", answer: "Yes, Hythe customers can hire cars, vans, minibuses and trucks depending on the vehicle type needed and availability at the time of booking." },
+    { question: "What is Hythe vehicle hire commonly used for?", answer: "Many customers in Hythe hire for moving house, collecting furniture, trade work, family trips and temporary business transport." },
+    { question: "Can you deliver a hire vehicle in Hythe?", answer: "Yes, free delivery and collection can help make local bookings more convenient." },
+    { question: "How do I know which hire vehicle size to book?", answer: "That depends on how much you need to carry, but we can help you choose a suitable size based on your load and route." },
+    { question: "Do you support business vehicle hire in Hythe?", answer: "Yes, business customers in Hythe can hire vehicles for deliveries, projects, staff transport and temporary fleet support." },
   ];
   const trustCards = [
-    { title: "Dependable fleet standards", description: "Our rental vehicles are prepared for practical, everyday use across personal and business bookings.", icon: ShieldCheck },
-    { title: "Helpful from the start", description: "We aim to make booking clear, with sensible guidance on vehicle type, hire period and local arrangements.", icon: Star },
-    { title: "Flexible for different jobs", description: "From single-day rentals to longer needs, we support a wide range of transport requirements around Chandler's Ford.", icon: Users },
+    { title: "Built around reliability", description: "Vehicles are maintained and prepared for practical day-to-day use, not just showroom appearance.", icon: ShieldCheck },
+    { title: "Suitable for many uses", description: "We support both private and business customers with flexible vehicle hire that fits real requirements.", icon: Star },
+    { title: "Convenient from day one", description: "Free delivery and collection helps make Hythe bookings easier to manage from the start.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "Cars for local travel, visiting clients and everyday use." },
-    { value: "Van Hire", label: "Vans for moving items, trade work and delivery runs." },
-    { value: "Minibus Hire", label: "Minibuses for group transport and planned events." },
-    { value: "Truck Hire", label: "Trucks for heavier loads and commercial transport needs." },
+    { value: "Car Hire", label: "Vans for moves, collections, trade equipment and day-to-day transport jobs." },
+    { value: "Van Hire", label: "Car hire for local journeys, business trips and short-term replacement needs." },
+    { value: "Minibus Hire", label: "Minibuses for group travel, events and organised outings from Hythe." },
+    { value: "Truck Hire", label: "Truck hire for larger loads and commercial transport requirements." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +60,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "Choice that makes sense", description: "The range covers small everyday vehicles through to larger options for loads, passengers and business use.", detail: "That makes it easier to book a vehicle that genuinely suits the job rather than paying for the wrong size." },
-    { icon: Clock3, title: "Flexible around your timetable", description: "Flexible hire periods help with one-off plans, temporary cover and longer scheduled requirements.", detail: "Useful for movers, trades, office support, event transport and growing businesses." },
-    { icon: CheckCircle2, title: "Convenience built in", description: "A service-led approach keeps booking clear, practical and focused on getting you on the road efficiently.", detail: "Delivery and collection options can also help reduce disruption to your day." },
+    { icon: BadgePoundSterling, title: "The right size for the job", description: "Choose a vehicle suited to moving, deliveries, family travel or commercial work.", detail: "A broad fleet means you can avoid paying for more vehicle than you need." },
+    { icon: Clock3, title: "Convenient local support", description: "Free delivery and collection can make hiring more convenient around Hythe and the Waterside area.", detail: "Especially useful if your booking starts at home, work or a project site." },
+    { icon: CheckCircle2, title: "Flexible and dependable", description: "Our service is built around practical self-drive use, from one-off personal bookings to regular business demand.", detail: "Flexible hire periods help you keep the vehicle for the time you actually need." },
   ];
 
   return (
@@ -103,8 +111,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"Practical Vehicle Hire in Brockenhurst"}</h1>
-                <p className="text-xl text-white">{"Cars, vans, minibuses and trucks for personal bookings, business needs and everyday transport around Chandler's Ford."}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Reliable vehicle hire in Stockbridge"}</h1>
+                <p className="text-xl text-white">{"Vans, cars, minibuses and trucks available in Stockbridge with flexible booking, maintained vehicles and practical support for local or longer trips."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -127,18 +135,18 @@ export default function LocationPage() {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"Simple self-drive hire near major routes"}
+                  {"Book around your schedule"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Arrange vehicle hire in Chandler's Ford"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"Whether you need a vehicle for local errands, a move, group travel or work support, we make hiring in Chandler's Ford clear and practical with flexible options and helpful guidance."}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Straightforward booking for Stockbridge hires"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"We keep vehicle hire in Stockbridge simple to arrange, with clear booking support, flexible rental periods and a range of vehicles suited to personal and business use."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"Flexible rental periods"}
+                    {"Maintained hire vehicles"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"Maintained vehicles for real use"}
+                    {"Personal and business use"}
                   </div>
                 </div>
               </div>
@@ -153,8 +161,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"Why book with Southern Van Hire in Chandler's Ford"}</h2>
-            <p className="text-lg text-muted-foreground">{"A practical, service-led choice for Chandler's Ford customers who want reliable self-drive hire without unnecessary complications."}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"Why Stockbridge customers trust our service"}</h2>
+            <p className="text-lg text-muted-foreground">{"Customers in Stockbridge value a service that is clear, dependable and suited to real transport needs. That is exactly what we aim to provide across our hire range."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +181,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Fleet options"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vehicle hire choices in Chandler's Ford"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"A broad self-drive fleet for Chandler's Ford customers who need practical transport options in one place."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Vehicle types available"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Hire vehicles available for Stockbridge customers"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"A broad choice of self-drive vehicles for everyday transport, business use, longer journeys and specialist moving jobs in Stockbridge."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -195,13 +203,13 @@ export default function LocationPage() {
 
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local hire support"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Dependable vehicle rental in Chandler's Ford"}</h2>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local hire made simple"}</p>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Vehicle hire that works for Stockbridge"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"Chandler's Ford is a strong location for vehicle hire thanks to its links with Eastleigh, Southampton, Winchester and the wider motorway network. That makes it useful for both local bookings and longer journeys where a dependable self-drive vehicle is important."}</p>
-            <p>{"Customers in Chandler's Ford often need hire vehicles for moving home, collecting bulky items, supporting projects, covering short-term business demand or organising group travel. Having access to different vehicle types in one place helps keep planning simpler."}</p>
-            <p>{"Southern Van Hire provides cars, vans, minibuses and trucks with a practical, no-fuss approach. We focus on maintained vehicles, sensible booking support and flexible rental periods that work for private customers as well as businesses."}</p>
-            <p>{"With nearby access to major roads and commercial areas, Chandler's Ford works well for hires that need to cover a lot of ground in a short time. Delivery and collection options can also make the process more convenient when your day is already busy."}</p>
+            <p>{"For customers in Stockbridge, vehicle hire often needs to balance convenience with practicality. Whether you are moving items locally, heading out across Hampshire or arranging transport for business use, we offer vehicles that help you get the job done efficiently."}</p>
+            <p>{"Stockbridge is a smaller town with strong links to surrounding rural areas as well as routes towards Winchester, Andover and Salisbury. That means the right hire vehicle needs to suit both town access and longer A-road travel."}</p>
+            <p>{"For customers in Stockbridge, vehicle hire often needs to be straightforward and flexible, whether it is for rural deliveries, event transport, home projects or business use. Southern Van Hire helps keep things simple with a wide vehicle choice, clear booking support and practical hire periods that work for both local journeys and longer mileage."}</p>
+            <p>{"With maintained vehicles and flexible hire options, our Stockbridge service is built for real transport needs rather than complicated booking processes. It is a dependable solution for residents, visitors and businesses needing self-drive hire."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +218,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Useful reasons to book"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"A practical fit for Chandler's Ford hire needs"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Key reasons customers in Chandler's Ford use our vehicle hire service for personal travel, moving jobs and business transport."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Practical reasons to book"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Benefits of booking in Stockbridge"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Practical reasons why drivers and businesses in Stockbridge choose our vehicle hire service for local and longer-distance transport."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -254,8 +262,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Nearby areas around Chandler's Ford"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"We do not just cover Chandler's Ford. Our wider service also reaches nearby places that are useful for local collections and onward travel."}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Areas served around Stockbridge"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"If Stockbridge is your main pickup area, we also cover surrounding locations that are practical for nearby collections, deliveries and onward travel."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -266,16 +274,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Vehicles for different jobs"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Our vehicle range supports domestic, business and group travel needs with practical self-drive options."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Vehicles for everyday needs"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"From local personal use to business transport, our rental vehicles are chosen to cover a wide range of practical jobs."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Booking that works around you"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Flexible booking periods help customers arrange transport around changing plans and workloads."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Flexible rental periods"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"You can book for short periods or arrange longer hire where needed, giving you more control over how the vehicle fits your plans."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Built for dependable travel"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"A maintained fleet and helpful service keep hiring simple for journeys in Chandler's Ford and beyond."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Straightforward booking help"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Support stays focused on keeping things simple, with helpful guidance on vehicle choice and local booking arrangements."}</p>
             </div>
           </div>
         </div>
@@ -285,14 +293,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving around Brockenhurst"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for getting in and out of Brockenhurst with a hire vehicle."}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving Around Stockbridge"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for planning a hire vehicle in and around Stockbridge, with straightforward route and stop advice."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"Brockenhurst is a practical base for vehicle hire if you need to move around the New Forest without relying on public transport. In the village itself, traffic can build around the station area and through the centre, so it helps to collect or receive your vehicle with a clear loading plan, especially if you are moving luggage, bikes, event equipment or larger items."}</p>
-            <p className="text-base leading-8 text-slate-600">{"For local trips, Brookside Road is useful for getting around the village, while Lymington Road gives a straightforward route out towards surrounding parts of the forest and the coast. If you are hiring a van or minibus, allow extra time on narrower local stretches and be ready for slower progress than you might expect on rural roads."}</p>
-            <p className="text-base leading-8 text-slate-600">{"Brockenhurst is often chosen for holiday accommodation changeovers, self-catering arrivals, outdoor leisure trips and small event transport. A compact car can suit short local runs, while a larger van is often the better choice for baggage, equipment, furniture collection or group supplies where space matters more than speed."}</p>
-            <p className="text-base leading-8 text-slate-600">{"When planning your journey, think ahead about parking and unloading, particularly near busier village spots and accommodation areas. If you are heading out early or returning later in the day, having your route set in advance makes things much easier, especially when driving a larger hire vehicle through forest roads and shared local routes."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Stockbridge journeys often work best when you keep planning simple and allow a little extra time around local high streets and narrower residential roads. If you are collecting furniture, loading event kit or heading out with a larger hire vehicle, it helps to choose quieter parts of the day and confirm where you can stop safely before setting off."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For onward travel, Ferry Road is one of the more useful named routes to keep in mind when joining wider links beyond Stockbridge. It can be a practical corridor for moving between local areas before continuing onto busier roads, especially if you want to avoid unnecessary turns in an unfamiliar vehicle."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If you need to top up before returning your vehicle or heading further afield, a nearby filling station can make the end of the journey easier to manage. In and around Stockbridge, many drivers simply plan fuel and unloading stops in advance so they are not searching at the last minute with a van, minibus or truck."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Stockbridge is a sensible starting point for short local hires and longer runs alike, whether you are moving items across town or connecting with the wider city area. The main thing is to match the vehicle to the job, leave room for parking and loading, and take a steady route if you are driving something larger than usual."}</p>
           </div>
         </div>
       </section>
@@ -300,9 +308,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Need to know"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Chandler's Ford FAQs"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"Common questions from customers arranging vehicle hire in Chandler's Ford."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Help before you book"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Stockbridge vehicle hire FAQs"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Common questions about hiring a vehicle in Stockbridge, answered in a clear and practical way."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -320,8 +328,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"Ready to book in Chandler's Ford?"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"If you need a car, van, minibus or truck in Chandler's Ford, we can help you organise a practical rental without unnecessary hassle."}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Book your Stockbridge vehicle hire"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"If you need a van, car, minibus or truck in Stockbridge, we are here to help you arrange the right vehicle with flexible, practical service."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>

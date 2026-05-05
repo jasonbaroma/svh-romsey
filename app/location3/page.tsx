@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { mainLocationName } from "@/lib/company";
 import { phoneDisplay, phoneHref } from "@/lib/contact";
 import { buildLocationLinks } from "@/lib/location-links";
+import { slugifyLocation } from "@/lib/utils";
 import {
   BadgePoundSterling,
   CheckCircle2,
@@ -19,27 +21,33 @@ import {
   Users,
 } from "lucide-react";
 
+export const metadata = {
+  alternates: {
+    canonical: `/${slugifyLocation("Bishop's Waltham")}`,
+  },
+} satisfies Metadata;
+
 export default function LocationPage() {
   const locationLinks = buildLocationLinks("Bishop's Waltham");
-  const heroImage = { src: "/images/location3-image1.jpeg", alt: "White rental van on a rural road near Bishop's Waltham" };
-  const supportImage = { src: "/images/location3-image2.jpeg", alt: "Rental van unloading supplies outside a small business in Bishop's Waltham" };
+  const heroImage = { src: "/images/location3-image1.jpeg", alt: "Hire van parked near the centre of Bishop's Waltham" };
+  const supportImage = { src: "/images/location3-image2.jpeg", alt: "Rental vehicle on a road leading through Bishop's Waltham" };
   const faqs = [
-    { question: "What vehicles can I hire in Totton?", answer: "Yes, subject to availability we offer cars, vans, minibuses and trucks for customers in Totton." },
-    { question: "Can I book for a day or for longer?", answer: "Yes, we can usually help with short-term bookings as well as longer rental arrangements." },
-    { question: "Do you offer delivery and collection in Totton?", answer: "Yes, delivery and collection can often be arranged depending on the vehicle and booking details." },
-    { question: "Which vehicle is best for a house move in Totton?", answer: "A van is often the best fit, but the right size depends on what you are moving. We can help you choose something suitable." },
-    { question: "Do you supply hire vehicles for business use?", answer: "Yes, we work with both private customers and businesses needing practical self-drive transport." },
+    { question: "Can I book a hire vehicle in Bishop's Waltham for a local move?", answer: "Yes, we can help arrange vehicle hire for customers in Bishop's Waltham, subject to availability and booking details." },
+    { question: "What types of vehicles are available for Bishop's Waltham customers?", answer: "Yes, free delivery and collection is available, which can be especially helpful for busy residential or business bookings." },
+    { question: "Do you offer flexible hire periods in Bishop's Waltham?", answer: "Short rentals are available, and longer bookings can also be arranged depending on what you need." },
+    { question: "Is Bishop's Waltham a suitable starting point for longer Hampshire journeys?", answer: "A medium or large van is often a good fit for moving furniture or handling a house move, but the best choice depends on load size." },
+    { question: "Do businesses in Bishop's Waltham use your hire vehicles as well?", answer: "Many customers do. We support both private and business use, so the best option depends on the type of journey and load." },
   ];
   const trustCards = [
-    { title: "Maintained and ready to go", description: "Our vehicles are prepared for practical use, whether you are travelling locally or heading further afield.", icon: ShieldCheck },
-    { title: "Straightforward service", description: "We keep the booking process clear and helpful so customers can arrange transport without unnecessary back and forth.", icon: Star },
-    { title: "Suitable for personal and business use", description: "We support both private and business hires with flexible rental periods and a wide vehicle range.", icon: Users },
+    { title: "Prepared to go", description: "Our vehicles are maintained for dependable performance across local and longer-distance journeys.", icon: ShieldCheck },
+    { title: "Straightforward service", description: "The booking process is kept practical and clear, without unnecessary complication.", icon: Star },
+    { title: "Useful for all kinds of hire", description: "Support for private customers, trades and businesses in Bishop's Waltham who need practical self-drive transport without unnecessary delays.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "Cars for local journeys, business travel and everyday driving." },
-    { value: "Van Hire", label: "Vans for moves, collections, deliveries and trade jobs." },
-    { value: "Minibus Hire", label: "Minibuses for group outings, events and organised travel." },
-    { value: "Truck Hire", label: "Trucks for heavier loads and more demanding transport work." },
+    { value: "Car Hire", label: "Practical vans for moves, trade jobs, stock runs and everyday transport tasks." },
+    { value: "Van Hire", label: "Comfortable car hire for local travel, business appointments and temporary replacement use." },
+    { value: "Minibus Hire", label: "Self-drive minibuses for group outings, club transport and organised travel." },
+    { value: "Truck Hire", label: "Larger truck hire for heavier loads, commercial work and planned logistics." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +60,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "Broad vehicle choice", description: "A wide choice of vehicles helps you match the hire to the route, load and number of passengers.", detail: "From compact cars to larger vans, minibuses and trucks, we help keep things practical rather than overcomplicated." },
-    { icon: Clock3, title: "Hire terms that fit", description: "Flexible rental periods make it easier to book for a day, a weekend, a week or a longer requirement.", detail: "That is useful for temporary work cover, planned moves, event transport and changing business demand." },
-    { icon: CheckCircle2, title: "Less running around", description: "Delivery and collection options can save time when you are managing a job, household move or fleet need.", detail: "It is a straightforward way to keep plans moving without extra trips to arrange transport." },
+    { icon: BadgePoundSterling, title: "Broad vehicle choice", description: "Book a vehicle that matches the size of the job, from quick personal use to larger commercial moves.", detail: "Cars, vans, minibuses and trucks available for flexible rental periods." },
+    { icon: Clock3, title: "Less hassle around booking", description: "Local delivery and collection helps save time when your schedule is already busy.", detail: "Useful for home moves, trade work, fleet cover and event transport." },
+    { icon: CheckCircle2, title: "Ready for real work", description: "Vehicles are prepared for practical daily use so you can focus on the trip ahead.", detail: "A dependable option for both one-off hires and repeat business use." },
   ];
 
   return (
@@ -103,8 +111,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"Reliable Vehicle Hire in Bishop's Waltham"}</h1>
-                <p className="text-xl text-white">{"Flexible self-drive vehicle hire for home moves, business use, deliveries and everyday travel around Totton and beyond."}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Dependable vehicle hire in Bishop's Waltham"}</h1>
+                <p className="text-xl text-white">{"Choose from vans, cars, minibuses and trucks in Bishop's Waltham with flexible rental periods, maintained vehicles and straightforward local support."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -127,18 +135,18 @@ export default function LocationPage() {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"Flexible bookings for local and longer trips"}
+                  {"Easy local booking"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Book the right hire vehicle for Totton"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"Hiring in Totton should be simple. We offer a straightforward booking process, practical advice on vehicle choice and flexible arrangements for both private and business customers."}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Book hire vehicles easily in Bishop's Waltham"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"Booking a hire vehicle in Bishop's Waltham should not be hard work. We keep things simple, with practical guidance on vehicle choice, flexible hire periods and support for both personal and business use."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"Delivery and collection available"}
+                    {"Free delivery and collection"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"Cars, vans, minibuses and trucks"}
+                    {"Flexible hire periods"}
                   </div>
                 </div>
               </div>
@@ -153,8 +161,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"Why Totton customers choose Southern Van Hire"}</h2>
-            <p className="text-lg text-muted-foreground">{"A practical vehicle hire service for Totton with dependable support, flexible booking and options for many different transport needs."}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"A dependable choice in Bishop's Waltham"}</h2>
+            <p className="text-lg text-muted-foreground">{"Our Bishop's Waltham service focuses on dependable vehicles, flexible booking and the kind of straightforward support people want when transport matters."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +181,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"What you can hire"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Cars, vans, minibuses and trucks in Totton"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"A practical range of self-drive vehicles for Totton customers who need transport that matches the job."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Our hire range"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Hire options available in Bishop's Waltham"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"From everyday transport needs to larger commercial jobs, we offer a broad mix of hire vehicles for customers in Bishop's Waltham."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -195,13 +203,13 @@ export default function LocationPage() {
 
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why choose us"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Straightforward self-drive hire in Totton"}</h2>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why book here"}</p>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Why Bishop's Waltham customers book with us"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"Totton is a practical place to arrange vehicle hire if you need quick access towards Southampton, the New Forest and the main motorway network. Southern Van Hire supports local customers with cars, vans, minibuses and trucks that are suited to everyday transport needs rather than one-size-fits-all rental."}</p>
-            <p>{"Many hires in Totton are for home moves, furniture collection, temporary business cover, event transport and trade work. Having the right vehicle ready for the job can save time, reduce repeat journeys and make loading and travel far easier."}</p>
-            <p>{"We focus on maintained vehicles, clear booking options and practical service. Whether you need a small car for local travel, a van for moving items, a minibus for group transport or a truck for heavier work, the aim is to keep the process straightforward from start to finish."}</p>
-            <p>{"Because Totton sits close to major routes, it is also a useful base for longer trips across Hampshire and beyond. Delivery and collection options, flexible hire periods and support for business users all help make the service convenient as well as dependable."}</p>
+            <p>{"If you need vehicle hire in Bishop's Waltham, the main priority is having the right vehicle for the job without unnecessary delays. We offer vans, cars, minibuses and trucks to cover everything from local collections to longer planned journeys."}</p>
+            <p>{"Bishop's Waltham sits in a useful position between Winchester, Fareham and Southampton, so many hires need to work for both town driving and wider Hampshire travel. We help customers choose vehicles that are practical, comfortable and suited to the route ahead."}</p>
+            <p>{"Some customers in Bishop's Waltham need a van for moving house or collecting furniture, while others need a car for temporary transport, a minibus for group travel or a truck for larger loads. The aim is always the same: straightforward hire that supports the task properly."}</p>
+            <p>{"With maintained vehicles, flexible rental periods and a service-led approach, our Bishop's Waltham vehicle hire is built around reliability. It is a practical option for local residents, tradespeople and businesses that need transport without added hassle."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +218,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Practical advantages"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Vehicle hire that suits busy Totton journeys"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful reasons customers in Totton choose Southern Van Hire for personal and business vehicle rental."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"What matters most"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Clear advantages for Bishop's Waltham bookings"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful reasons to book your hire vehicle through a service that understands the practical needs of Bishop's Waltham drivers."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -254,8 +262,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Other nearby places we cover from Totton"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"If Totton is convenient for your booking, we also serve surrounding areas across the wider local network."}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Nearby hire coverage around Bishop's Waltham"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"If you are based in Bishop's Waltham, we also cover surrounding locations that are useful for onward travel, collections and local transport needs across the area."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -266,16 +274,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Vehicle hire for all kinds of journeys"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"We supply rental vehicles for personal plans, business transport, group travel and heavier-duty work."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Hire terms that fit"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Whether you need a vehicle for a day, a week or longer, we offer practical hire periods that suit real jobs and real schedules."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Short and longer rental options"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Flexible booking periods help whether you need a vehicle for one day, several days or a longer arrangement."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Useful vehicle options"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Our fleet is selected to cover common local needs, from simple personal transport to heavier-duty commercial work."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Convenient local support"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Delivery and collection options can help keep your hire more convenient around Totton and nearby areas."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Simple from start to finish"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Booking support stays straightforward so you can focus on your route, your load and your timings."}</p>
             </div>
           </div>
         </div>
@@ -285,14 +293,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving and hire tips for Bishop's Waltham"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving advice for collecting, loading and travelling in and around Bishop's Waltham."}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving in and around Bishop's Waltham"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful driving notes for getting around Bishop's Waltham and planning a smoother hire journey."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"Bishop's Waltham is well suited to self-drive hire when you need to move around a market town setting and then head out into the wider Hampshire road network. For local pickups, short jobs and residential access, roads such as Victoria Road can be useful reference points, while Winchester Road is a straightforward route when you're leaving town or arriving back with a loaded vehicle."}</p>
-            <p className="text-base leading-8 text-slate-600">{"If you are hiring for a house move, furniture collection or business delivery, it helps to plan around the busier town-centre periods and give yourself a little extra time for narrower local streets. A compact van or standard panel van is often the practical choice for local work in Bishop's Waltham, while larger vehicles tend to suit jobs where most of the driving is on the wider approach roads rather than through the centre itself."}</p>
-            <p className="text-base leading-8 text-slate-600">{"For longer runs, many customers use Bishop's Waltham as a starting point for journeys toward Winchester, Southampton and surrounding Hampshire villages, so it is worth checking your route before setting off and choosing a vehicle that matches both the load and the distance. If you expect several stops in one day, simple things like easier loading height, rear access and enough cabin space can make the hire much more convenient."}</p>
-            <p className="text-base leading-8 text-slate-600">{"A bit of forward planning goes a long way here. Think about where you will stop to refuel on the way out of town, whether your destination has enough room to unload, and if your route includes tighter residential sections before joining more open roads. With the right hire vehicle, Bishop's Waltham works well for anything from a local clear-out to a full-day delivery schedule."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Bishop's Waltham is well suited to local vehicle hire because most journeys start on town-centre streets before quickly joining the wider Hampshire road network. If you are collecting furniture, moving stock or heading out for a day job, it helps to plan for narrower approach roads in the centre and leave a little extra time at busier points."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For practical routing, Winchester Road is one of the main local corridors to keep in mind when travelling in and out of Bishop's Waltham. It gives you a straightforward way to link the town with surrounding areas, which is useful if you are hiring a van, car or larger vehicle and want to avoid unnecessary detours."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Victoria Road is another useful local route, especially for short town runs, property access and smaller delivery jobs around Bishop's Waltham. If you are driving a longer wheelbase van or carrying bulky items, checking access and parking before you set off can make unloading much easier once you arrive."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For longer trips, many customers use Bishop's Waltham as a sensible starting point for work across the wider Winchester and Hampshire area. A well-planned hire vehicle gives you the flexibility to handle home moves, event transport, trade jobs or business deliveries without relying on multiple short trips in a smaller car."}</p>
           </div>
         </div>
       </section>
@@ -300,9 +308,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Helpful answers"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Totton hire FAQs"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"Quick answers for customers arranging vehicle hire in Totton and the surrounding area."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Bishop's Waltham FAQs"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Frequently asked questions for Bishop's Waltham"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Straight answers to common questions about arranging vehicle hire in Bishop's Waltham."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -320,8 +328,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"Need vehicle hire in Totton?"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"Tell us what you need to move, carry or organise and we will help you arrange a suitable vehicle in Totton."}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Arrange your Bishop's Waltham hire vehicle"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"If you are planning transport in Bishop's Waltham, we can help you arrange a suitable van, car, minibus or truck with practical support and flexible hire options."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>

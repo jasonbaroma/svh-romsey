@@ -49,24 +49,24 @@ export function HomePage({
   ];
   const faqs = [
     {
-      question: "{{FAQ_1_QUESTION}}",
-      answer: "{{FAQ_1_ANSWER}}",
+      question: "What vehicles can I hire from Southern Van Hire?",
+      answer: "We offer vans, cars, minibuses and trucks, with options suited to personal hire and business use.",
     },
     {
-      question: "{{FAQ_2_QUESTION}}",
-      answer: "{{FAQ_2_ANSWER}}",
+      question: "Can I book for more than one day?",
+      answer: "Yes, flexible rental periods are available, including short-term and longer hires depending on your needs.",
     },
     {
-      question: "{{FAQ_3_QUESTION}}",
-      answer: "{{FAQ_3_ANSWER}}",
+      question: "Do you offer delivery and collection?",
+      answer: "Yes, delivery and collection can be arranged to make hiring more convenient.",
     },
     {
-      question: "{{FAQ_4_QUESTION}}",
-      answer: "{{FAQ_4_ANSWER}}",
+      question: "What do people usually hire your vehicles for?",
+      answer: "Many customers hire for house moves, furniture pickups, business deliveries, events and general self-drive transport.",
     },
     {
-      question: "{{FAQ_5_QUESTION}}",
-      answer: "{{FAQ_5_ANSWER}}",
+      question: "Do you supply vehicles for business hire?",
+      answer: "Yes, we support both private customers and businesses looking for flexible vehicle hire.",
     },
   ];
 
@@ -128,10 +128,10 @@ export function HomePage({
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
                 <h1 className="text-5xl font-bold tracking-tight">
-                  {"{{HERO_TITLE}}"}
+                  {"Reliable vehicle hire in Romsey"}
                 </h1>
                 <p className="text-xl text-white">
-                  {"{{HERO_SUBTITLE}}"}
+                  {"Flexible self-drive van, car, minibus and truck hire in Romsey with maintained vehicles, helpful support and convenient delivery options."}
                 </p>
                 <Button
                   size="lg"
@@ -166,22 +166,22 @@ export function HomePage({
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"{{BOOKING_BADGE_TEXT}}"}
+                  {"Easy local booking"}
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">
-                  {"{{BOOKING_SECTION_TITLE}}"}
+                  {"Book a hire vehicle without the hassle"}
                 </h2>
                 <p className="mt-3 text-base leading-7 text-slate-600">
-                  {"{{BOOKING_SECTION_DESCRIPTION}}"}
+                  {"Booking with Southern Van Hire is designed to be simple. We help arrange the right vehicle, the right hire length and practical delivery or collection options to keep things moving."}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"{{BOOKING_FEATURE_1}}"}
+                    {"Free delivery and collection"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"{{BOOKING_FEATURE_2}}"}
+                    {"Flexible rental periods"}
                   </div>
                 </div>
               </div>
@@ -201,28 +201,28 @@ export function HomePage({
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-4xl font-bold">
-              {"{{TRUST_SECTION_TITLE}}"}
+              {"A hire service you can rely on"}
             </h2>
             <p className="text-lg text-muted-foreground">
-              {"{{TRUST_SECTION_DESCRIPTION}}"}
+              {"We focus on dependable vehicles, flexible hire and practical support for customers across Romsey and the surrounding area."}
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {[
               {
-                title: "{{TRUST_CARD_1_TITLE}}",
-                description: "{{TRUST_CARD_1_DESCRIPTION}}",
+                title: "Maintained vehicles",
+                description: "Our vehicles are kept well maintained and ready for practical day-to-day hire use.",
                 icon: ShieldCheck,
               },
               {
-                title: "{{TRUST_CARD_2_TITLE}}",
-                description: "{{TRUST_CARD_2_DESCRIPTION}}",
+                title: "Flexible rental periods",
+                description: "From short bookings to longer arrangements, we help customers hire on terms that suit the job.",
                 icon: Star,
               },
               {
-                title: "{{TRUST_CARD_3_TITLE}}",
-                description: "{{TRUST_CARD_3_DESCRIPTION}}",
+                title: "Straightforward local support",
+                description: "We support both personal and business customers with clear service and a broad vehicle range.",
                 icon: Users,
               },
             ].map((item) => (
@@ -249,13 +249,13 @@ export function HomePage({
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">
-              {"{{FEATURE_SECTION_KICKER}}"}
+              {"Our hire range"}
             </p>
             <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">
-              {"{{FEATURE_SECTION_TITLE}}"}
+              {"The right vehicle for the job"}
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-              {"{{FEATURE_SECTION_DESCRIPTION}}"}
+              {"Van hire is at the heart of what we do, backed up by a broader fleet that also includes cars, minibuses and trucks."}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button
@@ -272,19 +272,19 @@ export function HomePage({
             {[
               {
                 value: "Car Hire",
-                label: "{{FEATURE_CARD_1_DESCRIPTION}}",
+                label: "From small vans to larger load carriers for moves, deliveries and trade jobs.",
               },
               {
                 value: "Van Hire",
-                label: "{{FEATURE_CARD_2_DESCRIPTION}}",
+                label: "Practical car hire for local travel, business trips and everyday journeys.",
               },
               {
                 value: "Minibus Hire",
-                label: "{{FEATURE_CARD_3_DESCRIPTION}}",
+                label: "Comfortable minibus options for group travel, events and planned outings.",
               },
               {
                 value: "Truck Hire",
-                label: "{{FEATURE_CARD_4_DESCRIPTION}}",
+                label: "Truck hire for heavier loads, commercial tasks and larger transport requirements.",
               },
             ].map((item) => (
               <div
@@ -304,16 +304,16 @@ export function HomePage({
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">
-            {"{{CONTENT_SECTION_KICKER}}"}
+            {"A practical choice"}
           </p>
           <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
-            {"{{CONTENT_SECTION_TITLE}}"}
+            {"Vehicle hire built around real day-to-day needs"}
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"{{CONTENT_SECTION_PARAGRAPH_1}}"}</p>
-            <p>{"{{CONTENT_SECTION_PARAGRAPH_2}}"}</p>
-            <p>{"{{CONTENT_SECTION_PARAGRAPH_3}}"}</p>
-            <p>{"{{CONTENT_SECTION_PARAGRAPH_4}}"}</p>
+            <p>{"Southern Van Hire provides dependable self-drive vehicle hire in Romsey with a strong focus on vans, while also offering cars, minibuses and trucks for a wide range of transport needs."}</p>
+            <p>{"Customers hire from us for home moves, furniture collection, exhibitions, deliveries, weekends away, business cover and longer-term fleet support. The aim is always the same: make hiring a vehicle simple and useful."}</p>
+            <p>{"We keep our service straightforward, with maintained vehicles, clear booking support and flexible rental periods that suit both planned jobs and short-notice requirements."}</p>
+            <p>{"From a compact car for local travel to a larger van or truck for heavier loads, we help you find a practical option without unnecessary complications."}</p>
           </div>
         </div>
       </section>
@@ -326,13 +326,13 @@ export function HomePage({
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">
-              {"{{BENEFITS_SECTION_KICKER}}"}
+              {"Why book with us"}
             </p>
             <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
-              {"{{BENEFITS_SECTION_TITLE}}"}
+              {"Straightforward hire that works around you"}
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              {"{{BENEFITS_SECTION_DESCRIPTION}}"}
+              {"Practical reasons to choose a local, service-led vehicle hire company for short trips, longer rentals and business use."}
             </p>
           </div>
 
@@ -340,21 +340,21 @@ export function HomePage({
             {[
               {
                 icon: BadgePoundSterling,
-                title: "{{BENEFIT_1_TITLE}}",
-                description: "{{BENEFIT_1_DESCRIPTION}}",
-                detail: "{{BENEFIT_1_DETAIL}}",
+                title: "Wide vehicle choice",
+                description: "Choose from vans, cars, minibuses and trucks for personal or business use.",
+                detail: "Whether you are moving house, collecting stock or arranging staff travel, we can help match the vehicle to the job.",
               },
               {
                 icon: Clock3,
-                title: "{{BENEFIT_2_TITLE}}",
-                description: "{{BENEFIT_2_DESCRIPTION}}",
-                detail: "{{BENEFIT_2_DETAIL}}",
+                title: "Flexible hire periods",
+                description: "Book for a day, a week or longer with practical options that suit changing plans.",
+                detail: "Our team keeps the process clear and manageable, with support for one-off hires and ongoing business needs.",
               },
               {
                 icon: CheckCircle2,
-                title: "{{BENEFIT_3_TITLE}}",
-                description: "{{BENEFIT_3_DESCRIPTION}}",
-                detail: "{{BENEFIT_3_DETAIL}}",
+                title: "Dependable service",
+                description: "Our vehicles are prepared for the road and backed by dependable customer support.",
+                detail: "We focus on well-maintained vehicles, sensible service and fewer complications from booking to return.",
               },
             ].map((item) => (
               <div
@@ -419,10 +419,10 @@ export function HomePage({
               {"Nearby Locations"}
             </p>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
-              {"{{NEARBY_LOCATIONS_SECTION_TITLE}}"}
+              {"Areas we cover near Romsey"}
             </h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
-              {"{{NEARBY_LOCATIONS_SECTION_INTRO}}"}
+              {"We cover Romsey and a range of nearby towns, making it easier to arrange a suitable hire vehicle close to where you live or work."}
             </p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -439,26 +439,26 @@ export function HomePage({
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
               <h3 className="text-2xl font-semibold tracking-tight text-slate-950">
-                {"{{INFO_CONTENT_BLOCK_1_TITLE}}"}
+                {"Vehicles for different jobs"}
               </h3>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                {"{{INFO_CONTENT_BLOCK_1_BODY}}"}
+                {"A broad choice of rental vehicles makes it easier to book something that fits the journey, load size or number of passengers."}
               </p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
               <h3 className="text-2xl font-semibold tracking-tight text-slate-950">
-                {"{{INFO_CONTENT_BLOCK_2_TITLE}}"}
+                {"Hire terms that suit you"}
               </h3>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                {"{{INFO_CONTENT_BLOCK_2_BODY}}"}
+                {"Flexible booking periods help whether you need a hire vehicle for a single task, a busy week or ongoing business support."}
               </p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
               <h3 className="text-2xl font-semibold tracking-tight text-slate-950">
-                {"{{INFO_CONTENT_BLOCK_3_TITLE}}"}
+                {"Prepared for the road"}
               </h3>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                {"{{INFO_CONTENT_BLOCK_3_BODY}}"}
+                {"Maintained vehicles and straightforward service give you a more dependable rental experience from start to finish."}
               </p>
             </div>
           </div>
@@ -472,24 +472,24 @@ export function HomePage({
               {"Local Guide"}
             </p>
             <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
-              {"{{LOCAL_GUIDE_SECTION_TITLE}}"}
+              {"Local driving guide for Romsey"}
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              {"{{LOCAL_GUIDE_SECTION_DESCRIPTION}}"}
+              {"Helpful driving and route tips for getting the most from vehicle hire in and around Romsey."}
             </p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
             <p className="text-base leading-8 text-slate-600">
-              {"{{LOCAL_GUIDE_PARAGRAPH_1}}"}
+              {"Romsey works well as a starting point for local vehicle hire because the town is compact, easy to navigate and well placed for journeys across Test Valley and the wider Hampshire area. If you are collecting furniture, heading to a job, or organising a home move, it is worth planning your route through town in advance so you can avoid unnecessary turns on narrower streets and get onto the main local routes quickly."}
             </p>
             <p className="text-base leading-8 text-slate-600">
-              {"{{LOCAL_GUIDE_PARAGRAPH_2}}"}
+              {"For drivers hiring a van, car, minibus or truck in Romsey, fuel planning is straightforward. Greatbridge Service Station is a useful nearby stop when you want to top up before returning your vehicle or setting off on a longer run. There is also an Esso site a little further out, which can be handy if your route takes you beyond the town centre and into the surrounding Hampshire road network."}
             </p>
             <p className="text-base leading-8 text-slate-600">
-              {"{{LOCAL_GUIDE_PARAGRAPH_3}}"}
+              {"If you are using a larger hire vehicle, it helps to keep breaks simple and practical. The Greatbridge area gives you an easy point to pause, check your load, and sort out directions before continuing. That can be especially useful for business deliveries, exhibition transport or longer self-drive journeys where a quick stop near town makes the day run more smoothly."}
             </p>
             <p className="text-base leading-8 text-slate-600">
-              {"{{LOCAL_GUIDE_PARAGRAPH_4}}"}
+              {"Romsey is a sensible base for both short local hires and longer trips, whether you need a small car for personal travel or a larger vehicle for carrying goods and equipment. A bit of advance planning around fuel, turning space and your first stop can save time, especially if you are travelling with passengers, moving bulky items or working to a fixed schedule."}
             </p>
           </div>
         </div>
@@ -499,13 +499,13 @@ export function HomePage({
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">
-              {"{{FAQ_SECTION_KICKER}}"}
+              {"Need to know"}
             </p>
             <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
-              {"{{FAQ_SECTION_TITLE}}"}
+              {"Frequently asked questions"}
             </h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
-              {"{{FAQ_SECTION_DESCRIPTION}}"}
+              {"Useful answers about booking, vehicle types and how our hire service works."}
             </p>
           </div>
 
@@ -531,9 +531,9 @@ export function HomePage({
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"{{CTA_TITLE}}"}</h2>
+          <h2 className="mb-4 text-4xl font-bold">{"Ready to get on the road?"}</h2>
           <p className="mb-8 text-lg text-white/85">
-            {"{{CTA_DESCRIPTION}}"}
+            {"Speak to Southern Van Hire to arrange the right vehicle for your next job, trip or delivery with flexible local support from Romsey."}
           </p>
           <Button
             size="lg"

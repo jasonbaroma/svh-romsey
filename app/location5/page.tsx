@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { mainLocationName } from "@/lib/company";
 import { phoneDisplay, phoneHref } from "@/lib/contact";
 import { buildLocationLinks } from "@/lib/location-links";
+import { slugifyLocation } from "@/lib/utils";
 import {
   BadgePoundSterling,
   CheckCircle2,
@@ -19,27 +21,33 @@ import {
   Users,
 } from "lucide-react";
 
+export const metadata = {
+  alternates: {
+    canonical: `/${slugifyLocation("Fordingbridge")}`,
+  },
+} satisfies Metadata;
+
 export default function LocationPage() {
-  const locationLinks = buildLocationLinks("Lyndhurst");
-  const heroImage = { src: "/images/location5-image1.jpeg", alt: "White rental van driving through a traditional village setting in Lyndhurst" };
-  const supportImage = { src: "/images/location5-image2.jpeg", alt: "People checking directions beside a rental van in Lyndhurst" };
+  const locationLinks = buildLocationLinks("Fordingbridge");
+  const heroImage = { src: "/images/location5-image1.jpeg", alt: "Hire van parked near the River Avon in Fordingbridge" };
+  const supportImage = { src: "/images/location5-image2.jpeg", alt: "Self-drive rental vehicle on a local road near Fordingbridge and the New Forest edge" };
   const faqs = [
-    { question: "Can I hire a van in Lyndhurst for moving house?", answer: "Yes, we can help arrange van hire for home moves, furniture collection, storage runs and general transport jobs in and around Lyndhurst." },
-    { question: "Do you offer hire vehicles for travel beyond Lyndhurst?", answer: "Yes, subject to the vehicle type and hire terms. Let us know your plans in advance so we can advise on suitability and paperwork." },
-    { question: "Are flexible hire lengths available in Lyndhurst?", answer: "We offer short and longer rental periods depending on availability and the type of vehicle you need." },
-    { question: "Is Lyndhurst vehicle hire suitable for business use?", answer: "Yes, businesses can hire vehicles for deliveries, seasonal demand, staff transport and other operational needs." },
-    { question: "What do I need when collecting a hire vehicle?", answer: "Bring your booking details, driving licence and any other identification or documents requested when your hire is arranged." },
+    { question: "Can I hire for just a day in Fordingbridge?", answer: "Yes, subject to availability we can arrange short-term and longer rentals for Fordingbridge customers." },
+    { question: "Are your vehicles suitable for moving home or furniture?", answer: "Yes, many customers use our vehicles for moving furniture, collecting bulky purchases or handling a full house move." },
+    { question: "What types of vehicles can I hire in Fordingbridge?", answer: "We offer vans, cars, minibuses and trucks, with options depending on the size of the job and availability." },
+    { question: "Do you offer delivery and collection around Fordingbridge?", answer: "Delivery and collection can often be arranged, depending on location and booking details." },
+    { question: "What do I need when collecting a hire vehicle?", answer: "Bring your licence details, proof of address if requested, and your booking information so everything can be checked smoothly." },
   ];
   const trustCards = [
-    { title: "Well-maintained fleet", description: "Our hire vehicles are prepared to support everyday transport, business use and one-off jobs without unnecessary fuss.", icon: ShieldCheck },
-    { title: "Flexible hire support", description: "From a short local booking to a longer rental, we work to keep arrangements clear and suitable for the job in hand.", icon: Star },
-    { title: "Straightforward local service", description: "We support Lyndhurst customers with practical advice on vehicle choice, booking options and collection or delivery arrangements.", icon: Users },
+    { title: "Maintained fleet", description: "Our vehicles are kept in good working order and prepared for reliable self-drive use.", icon: ShieldCheck },
+    { title: "Flexible hire terms", description: "From one-day bookings to longer arrangements, we help tailor hire around the job you need to do.", icon: Star },
+    { title: "Personal and business use", description: "We support private customers, trades, local firms and organisations with practical vehicle options.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "Vans sized for moving, deliveries, retail collections and day-to-day transport jobs." },
-    { value: "Van Hire", label: "Cars for local journeys, weekend travel, temporary replacement use and business trips." },
-    { value: "Minibus Hire", label: "Minibuses for group outings, school travel, events and organised passenger transport." },
-    { value: "Truck Hire", label: "Trucks for heavier loads, trade work, site support and larger commercial moves." },
+    { value: "Car Hire", label: "Practical vans for moves, collections, trade work and everyday transport tasks." },
+    { value: "Van Hire", label: "Comfortable car hire for local travel, business trips and weekend use." },
+    { value: "Minibus Hire", label: "Minibuses for group outings, events and organised travel plans." },
+    { value: "Truck Hire", label: "Truck hire for larger loads, site work and heavier commercial jobs." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +60,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "One place for different vehicle types", description: "Our fleet covers everyday travel, moving jobs, group transport and heavier commercial use.", detail: "That means you can keep everything with one provider instead of searching around for separate vehicle types." },
-    { icon: Clock3, title: "Hire periods that stay practical", description: "Flexible booking periods help with urgent transport, scheduled work and longer-term planning.", detail: "A useful option for households, trades, offices and businesses dealing with changing demand." },
-    { icon: CheckCircle2, title: "Convenient local support", description: "Well-placed local coverage and delivery and collection options help make arrangements easier to manage.", detail: "That can save time when you already have collections, meetings, loading or staff travel to organise." },
+    { icon: BadgePoundSterling, title: "More suitable vehicle options", description: "Choose from cars, vans, minibuses and trucks for personal use, commercial work and everything in between.", detail: "A wider fleet helps you book for the task rather than settling for whatever is closest." },
+    { icon: Clock3, title: "Hire that fits your timeframe", description: "Flexible booking periods make it easier to cover a quick job, a busy week or a longer planned requirement.", detail: "Useful for project work, moves, temporary fleet gaps and event transport." },
+    { icon: CheckCircle2, title: "Simple and dependable support", description: "Service stays focused on reliability, convenience and clear communication throughout the booking.", detail: "Free delivery and collection can make Eastleigh hires easier to manage." },
   ];
 
   return (
@@ -103,8 +111,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle Hire in Lyndhurst"}</h1>
-                <p className="text-xl text-white">{"Practical self-drive van, car, minibus and truck hire for Lyndhurst, with flexible booking and dependable local support."}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle hire in Fordingbridge made simple"}</h1>
+                <p className="text-xl text-white">{"Flexible self-drive van, car, minibus and truck hire for Fordingbridge, with practical booking support and well-maintained vehicles."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -127,14 +135,14 @@ export default function LocationPage() {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00B395]/25 bg-white px-3 py-1 text-sm font-medium text-[#00B395]">
                   <PhoneCall className="h-4 w-4" />
-                  {"Easy to arrange, ready for the road"}
+                  {"Flexible local vehicle hire"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Simple vehicle hire for Lyndhurst"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"Booking for Lyndhurst is kept straightforward, whether you need a van for a move, a car for local travel, or a larger vehicle for business use. We help arrange the right hire period and a practical vehicle for New Forest roads and onward travel."}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Easy vehicle hire for Fordingbridge"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"Hiring in Fordingbridge is straightforward with practical support for local journeys, house moves, business use and longer trips. We help match the right vehicle to the job and keep collection or delivery arrangements simple."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"Flexible self-drive hire"}
+                    {"Flexible rental periods"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
@@ -153,8 +161,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"A dependable choice for Lyndhurst hire"}</h2>
-            <p className="text-lg text-muted-foreground">{"Customers in Lyndhurst choose us for practical vehicle options, clear booking support and hire that fits real transport needs."}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"A practical hire service for Fordingbridge"}</h2>
+            <p className="text-lg text-muted-foreground">{"Customers in Fordingbridge choose us for straightforward booking, dependable vehicles and a broad hire range that covers everyday and specialist transport needs."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +181,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Fleet options"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vehicle hire choices for Lyndhurst customers"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"From compact vehicles to larger load carriers, we cover the main hire categories customers around Lyndhurst regularly need."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Our vehicle range"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Hire Options for Fordingbridge Drivers and Businesses"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"From everyday car hire to hardworking vans, minibuses and trucks, we cover the vehicle types most often needed around Fordingbridge."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -196,12 +204,12 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why hire with us"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Dependable hire that suits New Forest driving"}</h2>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Straightforward Vehicle Hire in Fordingbridge"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"Lyndhurst hires often need a bit more planning than larger town bookings. Roads can narrow quickly once you leave the centre, and many customers want a vehicle that is easy to drive while still offering enough load space for moving, deliveries or event equipment."}</p>
-            <p>{"Southern Van Hire supports personal and business customers with vans, cars, minibuses and trucks, making it easier to match the vehicle to the job rather than making do with whatever is available. That is useful for everything from house clear-outs to hotel supplies and contractor work."}</p>
-            <p>{"Our approach is practical and service-led. Vehicles are prepared for hire, booking terms are explained clearly, and we aim to keep collection, delivery and return arrangements as straightforward as possible."}</p>
-            <p>{"If your journey starts in Lyndhurst and continues across Hampshire, Dorset or further afield, we can help you choose a rental vehicle that suits both the local roads and the distance you need to cover."}</p>
+            <p>{"Fordingbridge customers often need a vehicle that can handle a mix of town driving, rural roads and longer runs toward Salisbury, Ringwood or Southampton. That is why our range focuses on practical, well-maintained vehicles that are easy to book and simple to use."}</p>
+            <p>{"For customers in Fordingbridge, that means practical hire without unnecessary complications. You can book for anything from a short local job to a longer period for business use, seasonal demand or a more involved move."}</p>
+            <p>{"We support a wide mix of journeys from Fordingbridge, including furniture collection, house moves, delivery work, event transport and day-to-day travel when your usual vehicle is not suitable. The focus is on matching the vehicle to the job so you can get on with it efficiently."}</p>
+            <p>{"Whether you are based in the town itself, travelling in from nearby villages or heading out across the New Forest fringe, we aim to make vehicle hire around Fordingbridge practical, affordable and well organised."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +218,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why it works"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Good reasons to hire in Eastleigh"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful advantages for customers arranging practical self-drive vehicle hire in Eastleigh."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Helpful booking points"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Why book with us in Fordingbridge"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Helpful reasons to choose our vehicle hire service when you need practical transport in Fordingbridge and the surrounding area."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -254,8 +262,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Areas served around Lyndhurst"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"We also cover practical hire needs around Lyndhurst, including nearby New Forest villages and surrounding Hampshire locations."}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Other areas near Fordingbridge"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"We also support surrounding areas near Fordingbridge for customers who need a practical vehicle close to home or work."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -266,16 +274,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"The right vehicle for the journey"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Choose from cars, vans, minibuses and trucks depending on the size of the job, the number of passengers and the distance you plan to travel."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Vehicle choice that fits the job"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Choose from a broad mix of rental vehicles for personal use, business transport, events and one-off jobs."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Hire periods that fit around you"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Short-term and longer rentals are available, helping with one-off jobs, planned projects, busy trading periods and temporary replacement needs."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Maintained for practical use"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Our hire vehicles are prepared for dependable day-to-day use, helping you travel with confidence."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Prepared for practical use"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"A well-prepared rental vehicle makes day-to-day driving easier, especially when you need reliable transport without unnecessary complications."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Flexible booking options"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Short hires, longer bookings and business arrangements can all be discussed to suit the way you need to travel."}</p>
             </div>
           </div>
         </div>
@@ -285,14 +293,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving around Lyndhurst"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for planning vehicle hire around Lyndhurst and the surrounding New Forest area."}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving in and around Fordingbridge"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Straightforward driving and route-planning advice for getting the most from vehicle hire in and around Fordingbridge."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"Lyndhurst is a practical starting point for vehicle hire if you are heading across the New Forest or back toward the larger road network. Around the village itself, routes such as Southampton Road and Queens Road can be busier at popular times, so it helps to allow a little extra time when collecting goods, loading up, or setting off in a larger vehicle."}</p>
-            <p className="text-base leading-8 text-slate-600">{"If you are using a van, car, minibus, or truck for work or a household move, think about your route before you leave the centre of Lyndhurst. Some local roads feel narrower and more stop-start than the main approaches, so many drivers prefer to get onto the clearer through routes early, especially when carrying bulky items or travelling with a full load."}</p>
-            <p className="text-base leading-8 text-slate-600">{"Westwood Road can be useful for reaching nearby residential areas, while Southampton Road is often the more straightforward option for joining onward journeys. In a place like Lyndhurst, where visitor traffic and local movement can mix through the day, a self-drive hire vehicle gives you the flexibility to travel on your own schedule rather than working around fixed delivery windows."}</p>
-            <p className="text-base leading-8 text-slate-600">{"Lyndhurst hires are often used for holiday accommodation changeovers, furniture collection, event transport, and business trips that need more space than a standard car. If you are planning several stops, it is worth organising loading order, parking space, and turnaround points in advance so your journey through the village and out onto the surrounding routes stays simple."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Fordingbridge works well for practical vehicle hire because the town gives you straightforward access into the wider New Forest and across west Hampshire. If you are collecting furniture, handling deliveries or heading out for a house move, plan a route that avoids the busiest village pinch points and allow a little extra time for slower traffic through the centre."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For local errands, a smaller van or car is often the easiest option around Fordingbridge, especially if you expect tighter parking or short residential stops. If you are loading bulky items, it can help to organise your collection order in advance so you spend less time manoeuvring once the vehicle is packed."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If you need fuel, Fordingbridge Service Station is a useful nearby stop for topping up before returning your hire vehicle or setting off on a longer trip. Keeping an eye on fuel and taking a short break before joining longer rural stretches can make the day much easier, particularly when you are driving a larger vehicle for the first time."}</p>
+            <p className="text-base leading-8 text-slate-600">{"Many customers hiring in Fordingbridge are balancing local access with longer onward journeys, so it is worth choosing a vehicle that matches both your load and your route. Whether you need a van for moving day, a car for flexible travel, or a larger vehicle for business use, a sensible plan around loading, fuel stops and return timing helps keep the hire simple."}</p>
           </div>
         </div>
       </section>
@@ -300,9 +308,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Lyndhurst hire FAQs"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Questions we often hear in Lyndhurst"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"Useful answers for customers booking a rental vehicle in Lyndhurst and the wider New Forest area."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Fordingbridge FAQs"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Questions we hear from Fordingbridge customers"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Helpful answers for customers arranging vehicle hire in and around Fordingbridge."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -320,8 +328,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"Need vehicle hire in Lyndhurst?"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"Speak to Southern Van Hire for a practical quote and the right vehicle for your Lyndhurst booking."}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Book your Fordingbridge hire vehicle"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"If you need a van, car, minibus or truck in Fordingbridge, we can help you find a practical vehicle and a hire period that suits your plans."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>

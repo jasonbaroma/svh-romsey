@@ -9,9 +9,9 @@ const LOCATION_NAMES = [
   "North Baddesley",
   "Chandler's Ford",
   "Bishop's Waltham",
-  "Brockenhurst",
-  "Lyndhurst",
-  "Marchwood",
+  "Stockbridge",
+  "Fordingbridge",
+  "Totton",
 ] as const;
 
 export const nearbyLocationLinks = LOCATION_NAMES.map((label) => ({

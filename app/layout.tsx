@@ -5,8 +5,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Van, Car, Minibus and Truck Hire in Romsey | Southern Van Hire',
-  description: 'Southern Van Hire offers dependable van, car, minibus and truck hire in Romsey with flexible booking, maintained vehicles and practical local support.',
+  title: 'Vehicle Hire in Romsey | Southern Van Hire',
+  description: 'Southern Van Hire in Romsey offers practical van, car, minibus and truck hire with flexible booking, maintained vehicles and helpful local support.',
   generator: 'v0.app',
   alternates: {
     canonical: '/',
@@ -44,4 +44,3 @@ export default function RootLayout({
     </html>
   )
 }
-

@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import { mainLocationName } from "@/lib/company";
 import { phoneDisplay, phoneHref } from "@/lib/contact";
 import { buildLocationLinks } from "@/lib/location-links";
+import { slugifyLocation } from "@/lib/utils";
 import {
   BadgePoundSterling,
   CheckCircle2,
@@ -19,27 +21,33 @@ import {
   Users,
 } from "lucide-react";
 
+export const metadata = {
+  alternates: {
+    canonical: `/${slugifyLocation("North Baddesley")}`,
+  },
+} satisfies Metadata;
+
 export default function LocationPage() {
   const locationLinks = buildLocationLinks("North Baddesley");
-  const heroImage = { src: "/images/location1-image1.jpeg", alt: "White rental van driving along a tidy suburban road in North Baddesley" };
-  const supportImage = { src: "/images/location1-image2.jpeg", alt: "People loading boxes into a clean rental van outside a home in North Baddesley" };
+  const heroImage = { src: "/images/location1-image1.jpeg", alt: "Hire van driving near North Baddesley in Hampshire" };
+  const supportImage = { src: "/images/location1-image2.jpeg", alt: "Self-drive rental vehicle ready for a North Baddesley customer" };
   const faqs = [
-    { question: "What can I hire in North Baddesley?", answer: "Yes, customers in North Baddesley can hire vans, cars, minibuses and trucks depending on the job and availability." },
-    { question: "Can you deliver a hire vehicle to North Baddesley?", answer: "Yes, delivery and collection can often be arranged, which is useful if you want to keep the day simple." },
-    { question: "What are the most common reasons to hire here?", answer: "Many bookings are for house moves, furniture collection, trade jobs, business deliveries and group outings." },
-    { question: "Do you offer short and longer hires?", answer: "Yes, we offer flexible rental periods, so you can book for a short job or for longer if needed." },
-    { question: "Can you help me choose the right vehicle size?", answer: "We can guide you based on load space, passenger numbers, distance and the kind of driving you expect to do." },
+    { question: "Can I hire a van in North Baddesley for moving jobs?", answer: "Yes, van hire is a popular choice for North Baddesley house moves, furniture collection and DIY projects." },
+    { question: "Do you only provide vans in North Baddesley?", answer: "Yes, we offer cars, minibuses and trucks as well as vans, depending on the type of journey or load." },
+    { question: "Are longer rentals available from North Baddesley?", answer: "Many bookings can be arranged for both short-term and longer rental periods, depending on availability and requirements." },
+    { question: "Can the hire vehicle be delivered to North Baddesley?", answer: "Delivery and collection can be arranged, helping make the booking more convenient." },
+    { question: "Is North Baddesley vehicle hire suitable for business use?", answer: "Yes, business users often hire for delivery runs, temporary fleet cover and general transport needs." },
   ];
   const trustCards = [
-    { title: "Reliable vehicles", description: "A maintained fleet helps customers book with confidence for local and longer journeys.", icon: ShieldCheck },
-    { title: "Flexible service", description: "We keep booking arrangements practical, with support for different hire lengths and transport needs.", icon: Star },
-    { title: "Useful local support", description: "Southern Van Hire supports both private customers and businesses with straightforward local help.", icon: Users },
+    { title: "Road-ready fleet", description: "Vehicles are maintained and prepared for practical self-drive use across local and longer routes.", icon: ShieldCheck },
+    { title: "Helpful booking support", description: "We keep the process clear, from choosing a vehicle to arranging the rental period.", icon: Star },
+    { title: "Built for real use", description: "Suitable for private hire, business transport and one-off jobs that need a reliable vehicle.", icon: Users },
   ];
   const featureStats = [
-    { value: "Car Hire", label: "Van hire for moving jobs, storage runs, deliveries and trade use around North Baddesley." },
-    { value: "Van Hire", label: "Car hire for everyday travel, temporary replacement needs and local business journeys." },
-    { value: "Minibus Hire", label: "Minibus hire for family events, club trips and organised group travel." },
-    { value: "Truck Hire", label: "Truck hire for heavier loads, site work and larger commercial transport tasks." },
+    { value: "Car Hire", label: "Useful van hire for moving, trade work and bulky collections around North Baddesley." },
+    { value: "Van Hire", label: "Car hire for daily travel, appointments and short local trips." },
+    { value: "Minibus Hire", label: "Minibus options for family outings, club travel and event transport." },
+    { value: "Truck Hire", label: "Truck hire for larger loads and heavier transport tasks." },
   ];
   const vehicleCards = [
     { src: "/images/smallvan1.jpg", alt: "Small van hire vehicle", title: "Small Vans" },
@@ -52,9 +60,9 @@ export default function LocationPage() {
     { src: "/images/7.5tonnecurtainsidehire.jpg", alt: "7.5 tonne curtainside truck hire vehicle", title: "Truck Hire" },
   ];
   const benefits = [
-    { icon: BadgePoundSterling, title: "Choice that fits the job", description: "Hire the right vehicle for moving, collecting, delivering or day-to-day travel.", detail: "From a small van for furniture pickup to a larger vehicle for business work or a minibus for group plans, we help keep the choice practical." },
-    { icon: Clock3, title: "Hire around your schedule", description: "Flexible booking options help you plan around work, home moves and weekend jobs.", detail: "We aim to make timing easier with rental periods that suit short local use as well as longer bookings when more time is needed." },
-    { icon: CheckCircle2, title: "Dependable local support", description: "A maintained fleet and helpful service give you confidence before setting off.", detail: "We focus on reliable vehicles and clear arrangements so collection, delivery and the hire itself feel straightforward from the start." },
+    { icon: BadgePoundSterling, title: "Choice for everyday jobs", description: "From small cars to practical vans and larger vehicles, there is a sensible option for different journeys and loads.", detail: "That makes it easier to book for house clearances, furniture collection, local deliveries or business cover in and around North Baddesley." },
+    { icon: Clock3, title: "Rental periods that work", description: "Flexible hire periods help when jobs overrun or when you need transport beyond a single day.", detail: "Short local bookings and longer rentals can both be arranged with straightforward support." },
+    { icon: CheckCircle2, title: "Straightforward local service", description: "A maintained fleet and practical service help keep your booking simple from start to finish.", detail: "We focus on usable vehicles and clear communication rather than overcomplicating the process." },
   ];
 
   return (
@@ -103,8 +111,8 @@ export default function LocationPage() {
           <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="max-w-3xl">
               <div className="flex flex-col gap-6">
-                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle Hire in North Baddesley"}</h1>
-                <p className="text-xl text-white">{"Book self-drive vans, cars, minibuses and trucks for local jobs, business use and longer journeys with flexible support from Southern Van Hire."}</p>
+                <h1 className="text-5xl font-bold tracking-tight">{"Vehicle hire in North Baddesley made straightforward"}</h1>
+                <p className="text-xl text-white">{"Self-drive van, car, minibus and truck hire for North Baddesley with flexible booking, maintained vehicles and practical local support."}</p>
                 <Button size="lg" className="w-fit bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                   <a href={phoneHref}>Book Now</a>
                 </Button>
@@ -129,16 +137,16 @@ export default function LocationPage() {
                   <PhoneCall className="h-4 w-4" />
                   {"Simple booking for North Baddesley"}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Easy vehicle hire for North Baddesley"}</h2>
-                <p className="mt-3 text-base leading-7 text-slate-600">{"Hiring a vehicle for North Baddesley should be easy to arrange. We help local residents and businesses book suitable vans, cars, minibuses and trucks for one-off trips, planned jobs and ongoing transport needs without overcomplicating the process."}</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">{"Arrange hire around North Baddesley with ease"}</h2>
+                <p className="mt-3 text-base leading-7 text-slate-600">{"If you need vehicle hire in North Baddesley, we make booking clear and practical. Tell us what you need to move, where you are going and how long you need the vehicle for, and we will help with a suitable option."}</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-sm text-slate-600">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <PhoneCall className="h-4 w-4 text-[#00B395]" />
-                    {"Delivery and collection available"}
+                    {"Maintained self-drive vehicles"}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm">
                     <Clock3 className="h-4 w-4 text-[#00B395]" />
-                    {"Short and longer hires"}
+                    {"Delivery and collection available"}
                   </div>
                 </div>
               </div>
@@ -153,8 +161,8 @@ export default function LocationPage() {
       <section id="trust" className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold">{"Why customers choose us in North Baddesley"}</h2>
-            <p className="text-lg text-muted-foreground">{"Our North Baddesley service is built around dependable vehicles, practical booking help and flexible arrangements that suit everyday jobs."}</p>
+            <h2 className="mb-4 text-4xl font-bold">{"A dependable option for North Baddesley"}</h2>
+            <p className="text-lg text-muted-foreground">{"Customers in North Baddesley choose Southern Van Hire for practical vehicles, straightforward service and flexible hire support that fits around real transport needs."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3 md:auto-rows-fr">
             {trustCards.map((item) => (
@@ -173,9 +181,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20 text-slate-950">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Hire categories"}</p>
-            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"Vehicle options available for North Baddesley"}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"We provide practical self-drive options for everyday local use and wider Hampshire travel."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Available to hire"}</p>
+            <h2 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">{"A fleet that suits North Baddesley drivers"}</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">{"Our North Baddesley customers hire vehicles for all sorts of practical jobs, with vans leading the way and other categories available when needed."}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button size="lg" className="bg-[#00B395] text-white hover:bg-[#00997f]" asChild>
                 <a href={phoneHref}>No Hassle Booking {phoneDisplay}</a>
@@ -196,12 +204,12 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-5xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local vehicle hire"}</p>
-          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Straightforward hire for home, work and local travel"}</h2>
+          <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Practical hire for North Baddesley journeys"}</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-8 text-slate-600">
-            <p>{"Southern Van Hire supports North Baddesley with practical self-drive vehicle hire backed by the wider coverage and experience of a regional provider. While van hire is a major part of the service, we also offer cars, minibuses and trucks for many different transport requirements."}</p>
-            <p>{"North Baddesley is well placed for local and cross-county travel, making hire vehicles useful for house moves, furniture collection, business deliveries, trade work and short-term replacement transport. Customers often need something flexible rather than long-term ownership, and that is where hire can be a sensible option."}</p>
-            <p>{"Because the village sits close to Romsey, Southampton and key route links, many bookings involve a mix of local roads and larger A-road or motorway travel. We help customers choose a vehicle that suits the route, load and duration, whether that means a compact van, a comfortable car or a larger commercial option."}</p>
-            <p>{"Our aim is to keep the service straightforward: maintained vehicles, clear communication and practical booking support. That makes it easier for customers in North Baddesley to get a hire vehicle in place without wasting time."}</p>
+            <p>{"For customers in North Baddesley, we keep vehicle hire straightforward. Whether you need a van for a house move, a car for short-term transport, a minibus for group travel or a truck for heavier loads, we offer practical options backed by dependable service."}</p>
+            <p>{"North Baddesley is well placed for local journeys and longer runs across Hampshire, so flexibility matters. We help customers book the right size vehicle without overcomplicating the process, with hire periods that can suit one day, a weekend, a working week or something longer."}</p>
+            <p>{"Because many trips from North Baddesley join main routes quickly, having the right vehicle size matters. A smaller van may be enough for a short collection, while a larger load space can save repeat journeys across the day."}</p>
+            <p>{"Because many hires from North Baddesley are time-sensitive, we focus on clear communication, well-maintained vehicles and practical support from booking through to return. It is a simple service aimed at helping you get the job done with less hassle."}</p>
           </div>
         </div>
       </section>
@@ -210,9 +218,9 @@ export default function LocationPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,179,149,0.14),_transparent_55%)] pointer-events-none" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Why hire here"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Useful vehicle hire for North Baddesley journeys"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"A practical fleet, flexible bookings and a straightforward local service make hiring in North Baddesley easier to organise."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Helpful advantages"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Why North Baddesley drivers choose us"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful reasons to choose a hire service that understands day-to-day travel and transport around North Baddesley."}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {benefits.map((item) => (
@@ -260,8 +268,8 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Nearby Locations"}</p>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"Other places we cover near North Baddesley"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"If North Baddesley is not the only place you are travelling from, we also cover nearby Hampshire towns and villages that are practical for the same booking area."}</p>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">{"More hire coverage around North Baddesley"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"If North Baddesley is your starting point, we also cover a range of nearby Hampshire locations that are convenient for local collections, deliveries and onward travel."}</p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {locationLinks.map((location) => (
@@ -272,16 +280,16 @@ export default function LocationPage() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Suitable vehicles for real tasks"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"We help match customers in North Baddesley with a hire vehicle that suits the journey, number of passengers or amount of cargo involved."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Match the vehicle to the task"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"A suitable hire vehicle helps you avoid overloading, repeat trips or using the wrong type of transport for the job."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Prepared for practical use"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"Our rental vehicles are maintained and prepared to support reliable travel for domestic use, business work and planned transport needs."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Useful for planned and last-minute jobs"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Flexible hire periods are useful when local jobs in North Baddesley run longer than expected or involve several stops."}</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Helpful booking support"}</h3>
-              <p className="mt-3 text-base leading-7 text-slate-600">{"With delivery, collection and flexible hire periods available, booking a vehicle around North Baddesley can be kept simple and workable."}</p>
+              <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{"Ready for local and regional travel"}</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">{"Our self-drive vehicles are maintained and prepared to give customers a more dependable rental experience."}</p>
             </div>
           </div>
         </div>
@@ -291,14 +299,14 @@ export default function LocationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Local Guide"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"North Baddesley driving guide"}</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful local driving notes for getting in and out of North Baddesley with a hire vehicle."}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Driving in and around North Baddesley"}</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{"Useful driving and journey-planning advice for getting the most from a hire vehicle in North Baddesley."}</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-6 text-left">
-            <p className="text-base leading-8 text-slate-600">{"North Baddesley works well for straightforward local collection and drop-off planning, especially if you want to stay close to the village before joining wider Hampshire routes. Main Road is one of the practical local corridors to keep in mind, particularly for short residential moves, furniture pickups, and small business deliveries."}</p>
-            <p className="text-base leading-8 text-slate-600">{"If you are hiring a larger vehicle, it helps to plan around village traffic and give yourself a little extra time at busier parts of the day. Many customers use North Baddesley as a convenient starting point for jobs that begin locally and then continue out towards the wider Test Valley and Southampton side of the area."}</p>
-            <p className="text-base leading-8 text-slate-600">{"For self-drive van, car, minibus, or truck hire, the area suits practical trips such as house moves, collecting bulky items, event transport, and trade work. A short local run through North Baddesley is often followed by onward travel across Hampshire, so it is worth checking your loading plan, parking space, and route before setting off."}</p>
-            <p className="text-base leading-8 text-slate-600">{"When arranging vehicle hire in North Baddesley, the simplest approach is usually to think in stages: local access first, main route second, and unloading point third. That keeps the journey easier to manage, especially with longer vehicles or when timing matters for home deliveries, business bookings, or multi-stop work."}</p>
+            <p className="text-base leading-8 text-slate-600">{"North Baddesley works well for local vehicle hire because journeys are usually straightforward in and out of the village. Main Road is a useful reference when planning collection, delivery, or the first part of your route, especially if you want to avoid unnecessary turns through smaller residential streets."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If you are hiring for a house move, furniture collection, or weekend job, it helps to plan loading around quieter times of day. Roads through North Baddesley can feel busier around school runs and commuter periods, so an earlier pickup or a mid-morning start often makes loading and setting off easier."}</p>
+            <p className="text-base leading-8 text-slate-600">{"For business users, North Baddesley is a practical base for reaching the wider Test Valley area without the hassle of taking a larger vehicle into tighter village roads for longer than needed. Choosing the right size vehicle before travel is especially useful here, whether you need a compact van for light loads or something larger for multiple drops."}</p>
+            <p className="text-base leading-8 text-slate-600">{"If your trip starts or ends in North Baddesley, leave a little extra time for parking, turning space, and careful loading on residential roads. A short bit of route planning before you travel can make a big difference, particularly if you are carrying bulky items, heading out for a full day of deliveries, or returning the vehicle after normal traffic builds."}</p>
           </div>
         </div>
       </section>
@@ -306,9 +314,9 @@ export default function LocationPage() {
       <section className="bg-white px-6 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"Need to know"}</p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"North Baddesley hire FAQs"}</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">{"Answers to common questions about hiring a vehicle in North Baddesley."}</p>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-[#00B395]">{"North Baddesley FAQs"}</p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{"Questions about hiring in North Baddesley"}</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">{"Quick answers for customers arranging vehicle hire in and around North Baddesley."}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 px-6 shadow-sm">
             {faqs.map((item, index) => (
@@ -326,8 +334,8 @@ export default function LocationPage() {
 
       <section className="bg-[#00B395] px-6 py-16 text-center text-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-4xl font-bold">{"Book vehicle hire in North Baddesley"}</h2>
-          <p className="mb-8 text-lg text-white/85">{"Arrange a suitable van, car, minibus or truck for North Baddesley with flexible booking and practical help from Southern Van Hire."}</p>
+          <h2 className="mb-4 text-4xl font-bold">{"Need a hire vehicle in North Baddesley?"}</h2>
+          <p className="mb-8 text-lg text-white/85">{"Book a suitable van, car, minibus or truck for North Baddesley travel, moving jobs and business transport with Southern Van Hire."}</p>
           <Button size="lg" className="bg-white text-[#00B395] hover:bg-gray-100" asChild>
             <a href={phoneHref}>Book Now</a>
           </Button>
